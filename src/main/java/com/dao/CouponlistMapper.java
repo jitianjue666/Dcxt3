@@ -23,5 +23,6 @@ public interface CouponlistMapper {
     public List<Couponlist> getzijihongbao(int uuie);
     public List<Couponlist> getzijibendiangongbao(@Param("uuie")int uuie,@Param("sna")String sna);
     public void shanchu1(@Param("uuie")int uuie,@Param("cid")int cid);
+    public int qqq();
     public List<Couponlist> getzijibendiankeyonghongbao(@Param("uuie")int uuie,@Param("sna")String sna,@Param("fromm")double fromm);
 }
