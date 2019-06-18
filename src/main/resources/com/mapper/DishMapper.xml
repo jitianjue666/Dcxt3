@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.DishMapper">
+  <resultMap id="BaseResultMap" type="com.vo.Dish">
+    <id column="dishid" jdbcType="INTEGER" property="dishid" />
+    <result column="shopid" jdbcType="INTEGER" property="shopid" />
+    <result column="dishname" jdbcType="VARCHAR" property="dishname" />
+    <result column="dishphoto" jdbcType="VARCHAR" property="dishphoto" />
+    <result column="dishprice" jdbcType="DOUBLE" property="dishprice" />
+    <result column="dishintroduction" jdbcType="VARCHAR" property="dishintroduction" />
+    <result column="dishcategory" jdbcType="VARCHAR" property="dishcategory" />
+    <result column="dishlevel" jdbcType="INTEGER" property="dishlevel" />
+    <result column="dishsales" jdbcType="INTEGER" property="dishsales" />
+    <result column="dishstock" jdbcType="INTEGER" property="dishstock" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    dishid, shopid, dishname, dishphoto, dishprice, dishintroduction, dishcategory, dishlevel, 
+    dishsales, dishstock
+  </sql>
+  <select id="selectByExample" parameterType="com.vo.DishExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dish
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dish
+    where dishid = #{dishid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dish
+    where dishid = #{dishid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.vo.DishExample">
+    delete from dish
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.vo.Dish">
+    insert into dish (dishid, shopid, dishname, 
+      dishphoto, dishprice, dishintroduction, 
+      dishcategory, dishlevel, dishsales, 
+      dishstock)
+    values (#{dishid,jdbcType=INTEGER}, #{shopid,jdbcType=INTEGER}, #{dishname,jdbcType=VARCHAR}, 
+      #{dishphoto,jdbcType=VARCHAR}, #{dishprice,jdbcType=DOUBLE}, #{dishintroduction,jdbcType=VARCHAR}, 
+      #{dishcategory,jdbcType=VARCHAR}, #{dishlevel,jdbcType=INTEGER}, #{dishsales,jdbcType=INTEGER}, 
+      #{dishstock,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.Dish">
+    insert into dish
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dishid != null">
+        dishid,
+      </if>
+      <if test="shopid != null">
+        shopid,
+      </if>
+      <if test="dishname != null">
+        dishname,
+      </if>
+      <if test="dishphoto != null">
+        dishphoto,
+      </if>
+      <if test="dishprice != null">
+        dishprice,
+      </if>
+      <if test="dishintroduction != null">
+        dishintroduction,
+      </if>
+      <if test="dishcategory != null">
+        dishcategory,
+      </if>
+      <if test="dishlevel != null">
+        dishlevel,
+      </if>
+      <if test="dishsales != null">
+        dishsales,
+      </if>
+      <if test="dishstock != null">
+        dishstock,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dishid != null">
+        #{dishid,jdbcType=INTEGER},
+      </if>
+      <if test="shopid != null">
+        #{shopid,jdbcType=INTEGER},
+      </if>
+      <if test="dishname != null">
+        #{dishname,jdbcType=VARCHAR},
+      </if>
+      <if test="dishphoto != null">
+        #{dishphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="dishprice != null">
+        #{dishprice,jdbcType=DOUBLE},
+      </if>
+      <if test="dishintroduction != null">
+        #{dishintroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="dishcategory != null">
+        #{dishcategory,jdbcType=VARCHAR},
+      </if>
+      <if test="dishlevel != null">
+        #{dishlevel,jdbcType=INTEGER},
+      </if>
+      <if test="dishsales != null">
+        #{dishsales,jdbcType=INTEGER},
+      </if>
+      <if test="dishstock != null">
+        #{dishstock,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.vo.DishExample" resultType="java.lang.Long">
+    select count(*) from dish
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update dish
+    <set>
+      <if test="record.dishid != null">
+        dishid = #{record.dishid,jdbcType=INTEGER},
+      </if>
+      <if test="record.shopid != null">
+        shopid = #{record.shopid,jdbcType=INTEGER},
+      </if>
+      <if test="record.dishname != null">
+        dishname = #{record.dishname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dishphoto != null">
+        dishphoto = #{record.dishphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dishprice != null">
+        dishprice = #{record.dishprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.dishintroduction != null">
+        dishintroduction = #{record.dishintroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dishcategory != null">
+        dishcategory = #{record.dishcategory,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dishlevel != null">
+        dishlevel = #{record.dishlevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.dishsales != null">
+        dishsales = #{record.dishsales,jdbcType=INTEGER},
+      </if>
+      <if test="record.dishstock != null">
+        dishstock = #{record.dishstock,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update dish
+    set dishid = #{record.dishid,jdbcType=INTEGER},
+      shopid = #{record.shopid,jdbcType=INTEGER},
+      dishname = #{record.dishname,jdbcType=VARCHAR},
+      dishphoto = #{record.dishphoto,jdbcType=VARCHAR},
+      dishprice = #{record.dishprice,jdbcType=DOUBLE},
+      dishintroduction = #{record.dishintroduction,jdbcType=VARCHAR},
+      dishcategory = #{record.dishcategory,jdbcType=VARCHAR},
+      dishlevel = #{record.dishlevel,jdbcType=INTEGER},
+      dishsales = #{record.dishsales,jdbcType=INTEGER},
+      dishstock = #{record.dishstock,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vo.Dish">
+    update dish
+    <set>
+      <if test="shopid != null">
+        shopid = #{shopid,jdbcType=INTEGER},
+      </if>
+      <if test="dishname != null">
+        dishname = #{dishname,jdbcType=VARCHAR},
+      </if>
+      <if test="dishphoto != null">
+        dishphoto = #{dishphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="dishprice != null">
+        dishprice = #{dishprice,jdbcType=DOUBLE},
+      </if>
+      <if test="dishintroduction != null">
+        dishintroduction = #{dishintroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="dishcategory != null">
+        dishcategory = #{dishcategory,jdbcType=VARCHAR},
+      </if>
+      <if test="dishlevel != null">
+        dishlevel = #{dishlevel,jdbcType=INTEGER},
+      </if>
+      <if test="dishsales != null">
+        dishsales = #{dishsales,jdbcType=INTEGER},
+      </if>
+      <if test="dishstock != null">
+        dishstock = #{dishstock,jdbcType=INTEGER},
+      </if>
+    </set>
+    where dishid = #{dishid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vo.Dish">
+    update dish
+    set shopid = #{shopid,jdbcType=INTEGER},
+      dishname = #{dishname,jdbcType=VARCHAR},
+      dishphoto = #{dishphoto,jdbcType=VARCHAR},
+      dishprice = #{dishprice,jdbcType=DOUBLE},
+      dishintroduction = #{dishintroduction,jdbcType=VARCHAR},
+      dishcategory = #{dishcategory,jdbcType=VARCHAR},
+      dishlevel = #{dishlevel,jdbcType=INTEGER},
+      dishsales = #{dishsales,jdbcType=INTEGER},
+      dishstock = #{dishstock,jdbcType=INTEGER}
+    where dishid = #{dishid,jdbcType=INTEGER}
+  </update>
+  
+    <insert id="xinzengcaipin" parameterType="com.vo.Dish">
+    insert into dish (shopid, dishname, 
+      dishprice, dishintroduction, 
+      dishcategory,dishstock,dishsales)
+    values ( #{shopid,jdbcType=INTEGER}, #{dishname,jdbcType=VARCHAR}, 
+       #{dishprice,jdbcType=DOUBLE}, #{dishintroduction,jdbcType=VARCHAR}, 
+      #{dishcategory,jdbcType=VARCHAR},
+      #{dishstock,jdbcType=INTEGER},0)
+  </insert>
+    <select id="getid"  resultType="int">
+    select 
+    dishid
+    from dish
+    where  shopid= #{shopid,jdbcType=INTEGER} and dishname= #{dishname,jdbcType=VARCHAR}
+  </select>
+  <select id="listdish" resultType="map">
+select * from dish where shopid= #{shopid,jdbcType=INTEGER}
+</select>
+  <update id="xgcp" >
+    update dish
+    set 
+      dishname = #{dishname,jdbcType=VARCHAR},
+      dishprice = #{dishprice,jdbcType=DOUBLE},
+      dishintroduction = #{dishintroduction,jdbcType=VARCHAR},
+      dishstock = #{dishstock,jdbcType=INTEGER}
+ where  dishid= #{dishid,jdbcType=INTEGER}
+  </update>
+    <select id="getalldish" >
+select * from dish where shopid= #{shopid,jdbcType=INTEGER}
+</select>
+    <resultMap type="com.vo.Dish" id="dishdishphoto">
+        <!-- property 表示com.mybatis.bean.StudentTemp中的属性； column 表示表中的列名 -->
+    <id column="dishid" jdbcType="INTEGER" property="dishid" />
+    <result column="shopid" jdbcType="INTEGER" property="shopid" />
+    <result column="dishname" jdbcType="VARCHAR" property="dishname" />
+    <result column="dishphoto" jdbcType="VARCHAR" property="dishphoto" />
+    <result column="dishprice" jdbcType="DOUBLE" property="dishprice" />
+    <result column="dishintroduction" jdbcType="VARCHAR" property="dishintroduction" />
+    <result column="dishcategory" jdbcType="VARCHAR" property="dishcategory" />
+    <result column="dishlevel" jdbcType="INTEGER" property="dishlevel" />
+    <result column="dishsales" jdbcType="INTEGER" property="dishsales" />
+    <result column="dishstock" jdbcType="INTEGER" property="dishstock" />
+        <!-- association字面意思关联，这里只专门做一对一关联； property表示是com.mybatis.bean.StudentTemp中的属性名称； 
+            javaType表示该属性是什么类型对象 -->
+        <collection property="dishphotos" ofType="com.vo.Dishphoto">
+            <!-- property 表示com.mybatis.bean.Class中的属性； column 表示表中的列名 -->
+            <id property="did" column="did" />
+            <result property="dphoto" column="dphoto" />
+        </collection>
+    </resultMap>
+    <select id="getalldishphoto" resultMap="dishdishphoto" >
+select * from dish,dishphoto where dishid=did and shopid= #{shopid,jdbcType=INTEGER}
+</select>
+    <resultMap type="com.vo.Dish" id="dishdishphoto2">
+        <!-- property 表示com.mybatis.bean.StudentTemp中的属性； column 表示表中的列名 -->
+    <id column="dishid" jdbcType="INTEGER" property="dishid" />
+    <result column="shopid" jdbcType="INTEGER" property="shopid" />
+    <result column="dishname" jdbcType="VARCHAR" property="dishname" />
+    <result column="dishphoto" jdbcType="VARCHAR" property="dishphoto" />
+    <result column="dishprice" jdbcType="DOUBLE" property="dishprice" />
+    <result column="dishintroduction" jdbcType="VARCHAR" property="dishintroduction" />
+    <result column="dishcategory" jdbcType="VARCHAR" property="dishcategory" />
+    <result column="dishlevel" jdbcType="INTEGER" property="dishlevel" />
+    <result column="dishsales" jdbcType="INTEGER" property="dishsales" />
+    <result column="dishstock" jdbcType="INTEGER" property="dishstock" />
+        <!-- association字面意思关联，这里只专门做一对一关联； property表示是com.mybatis.bean.StudentTemp中的属性名称； 
+            javaType表示该属性是什么类型对象 -->
+        <association property="dphoto2" javaType="com.vo.Dishphoto">
+            <!-- property 表示com.mybatis.bean.Class中的属性； column 表示表中的列名 -->
+            <result property="did" column="did" />
+            <result property="dphoto" column="dphoto" />
+        </association>
+    </resultMap>
+        <select id="getalldish2" resultMap="dishdishphoto2" >
+select * from dish,dishphoto where dish.dishid=dishphoto.did and shopid= #{shopid,jdbcType=INTEGER} and dishcategory= #{dishcategory,jdbcType=VARCHAR} order by dishsales
+</select>
+        <select id="getalldish3" resultMap="dishdishphoto2" >
+select * from dish,dishphoto where dish.dishid=dishphoto.did and shopid= #{shopid,jdbcType=INTEGER}  order by dishcategory, dishsales
+</select>
+    <select id="getdishguishu" resultType="int" >
+select shopid from dish where  dishid= #{dishid,jdbcType=INTEGER}
+</select>
+    <select id="idgetmingzi" resultType="string" >
+select dishname from dish where  dishid= #{dishid,jdbcType=INTEGER}
+</select>
+    <select id="getprice" resultType="double" >
+select dishprice from dish where  dishid= #{dishid,jdbcType=INTEGER}
+</select>
+  <update id="kucunjianyi" >
+    update dish
+    set 
+      dishstock = dishstock-#{number,jdbcType=INTEGER}
+    where dishid = #{dishid,jdbcType=INTEGER}
+  </update>
+    <update id="over1" >
+    update dish
+    set 
+      dishsales = dishsales+#{num,jdbcType=INTEGER}
+    where dishid = #{dishid,jdbcType=INTEGER}
+  </update>
+      <select id="caipintuijian2" resultType="string" >
+select dishcategory from dish where  dishid= #{dishid,jdbcType=INTEGER}
+</select>
+      <select id="caipintuijian3" resultType="int" >
+select IFNULL(MAX(dishid),0) AS dishid from dish where  dishcategory = #{dishcategory,jdbcType=VARCHAR} and  dishid!= #{dishid,jdbcType=INTEGER} order by dishsales desc limit 1
+</select>
+<select id="caipintuijian4" resultType="int" >
+select dishsales from dish where  dishid = #{dishid,jdbcType=INTEGER}
+</select>
+<select id="getonlydish" resultType="dish" >
+select * from dish where  dishid = #{dishid,jdbcType=INTEGER}
+</select>
+    <select id="getalldish4" resultType="dish">
+select * from dish where shopid= #{shopid,jdbcType=INTEGER} order by dishsales desc
+</select>
+</mapper>

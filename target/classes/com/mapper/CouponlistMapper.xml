@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.CouponlistMapper">
+  <resultMap id="BaseResultMap" type="com.vo.Couponlist">
+    <result column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="uuie" jdbcType="INTEGER" property="uuie" />
+    <result column="fm" jdbcType="DOUBLE" property="fm" />
+    <result column="mm" jdbcType="DOUBLE" property="mm" />
+    <result column="sna" jdbcType="VARCHAR" property="sna" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    cid, uuie, fm, mm, sna
+  </sql>
+  <select id="selectByExample" parameterType="com.vo.CouponlistExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from couponlist
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.vo.CouponlistExample">
+    delete from couponlist
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.vo.Couponlist">
+    insert into couponlist (cid, uuie, fm, 
+      mm, sna)
+    values (#{cid,jdbcType=INTEGER}, #{uuie,jdbcType=INTEGER}, #{fm,jdbcType=DOUBLE}, 
+      #{mm,jdbcType=DOUBLE}, #{sna,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.Couponlist">
+    insert into couponlist
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cid != null">
+        cid,
+      </if>
+      <if test="uuie != null">
+        uuie,
+      </if>
+      <if test="fm != null">
+        fm,
+      </if>
+      <if test="mm != null">
+        mm,
+      </if>
+      <if test="sna != null">
+        sna,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cid != null">
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="uuie != null">
+        #{uuie,jdbcType=INTEGER},
+      </if>
+      <if test="fm != null">
+        #{fm,jdbcType=DOUBLE},
+      </if>
+      <if test="mm != null">
+        #{mm,jdbcType=DOUBLE},
+      </if>
+      <if test="sna != null">
+        #{sna,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.vo.CouponlistExample" resultType="java.lang.Long">
+    select count(*) from couponlist
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update couponlist
+    <set>
+      <if test="record.cid != null">
+        cid = #{record.cid,jdbcType=INTEGER},
+      </if>
+      <if test="record.uuie != null">
+        uuie = #{record.uuie,jdbcType=INTEGER},
+      </if>
+      <if test="record.fm != null">
+        fm = #{record.fm,jdbcType=DOUBLE},
+      </if>
+      <if test="record.mm != null">
+        mm = #{record.mm,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sna != null">
+        sna = #{record.sna,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update couponlist
+    set cid = #{record.cid,jdbcType=INTEGER},
+      uuie = #{record.uuie,jdbcType=INTEGER},
+      fm = #{record.fm,jdbcType=DOUBLE},
+      mm = #{record.mm,jdbcType=DOUBLE},
+      sna = #{record.sna,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+    <insert id="fafang1" parameterType="com.vo.Couponlist">
+    insert into couponlist (cid, uuie, fm, 
+      mm, sna)
+    values (#{cid,jdbcType=INTEGER}, #{uuie,jdbcType=INTEGER}, #{fm,jdbcType=DOUBLE}, 
+      #{mm,jdbcType=DOUBLE}, #{sna,jdbcType=VARCHAR})
+  </insert>
+    <select id="getzijihongbao"  resultType="com.vo.Couponlist">
+    select  * from couponlist where uuie=#{uuie,jdbcType=INTEGER}
+
+  </select>
+    <select id="getzijibendiangongbao"  resultType="com.vo.Couponlist">
+    select  * from couponlist where uuie=#{uuie,jdbcType=INTEGER} and sna = #{sna,jdbcType=VARCHAR}
+
+  </select>
+    <delete id="shanchu1" >
+    delete from couponlist where uuie=#{uuie,jdbcType=INTEGER} and cid = #{cid,jdbcType=INTEGER}
+  </delete>
+      <select id="getzijibendiankeyonghongbao"  resultType="com.vo.Couponlist">
+    select  * from couponlist where uuie=#{uuie,jdbcType=INTEGER} and sna = #{sna,jdbcType=VARCHAR} and fm &lt;= #{fromm,jdbcType=DOUBLE}
+
+  </select>
+</mapper>

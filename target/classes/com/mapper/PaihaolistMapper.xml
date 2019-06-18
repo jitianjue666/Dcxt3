@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.PaihaolistMapper">
+  <resultMap id="BaseResultMap" type="com.vo.Paihaolist">
+    <result column="buyerid" jdbcType="INTEGER" property="buyerid" />
+    <result column="sellerid" jdbcType="INTEGER" property="sellerid" />
+    <result column="paihao" jdbcType="INTEGER" property="paihao" />
+    <result column="zhuangtai" jdbcType="INTEGER" property="zhuangtai" />
+    <result column="ordernumber" jdbcType="INTEGER" property="ordernumber" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    buyerid, sellerid, paihao, zhuangtai
+  </sql>
+  <select id="selectByExample" parameterType="com.vo.PaihaolistExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from paihaolist
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.vo.PaihaolistExample">
+    delete from paihaolist
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.vo.Paihaolist">
+    insert into paihaolist (buyerid, sellerid, paihao, 
+      zhuangtai)
+    values (#{buyerid,jdbcType=INTEGER}, #{sellerid,jdbcType=INTEGER}, #{paihao,jdbcType=INTEGER}, 
+      #{zhuangtai,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.Paihaolist">
+    insert into paihaolist
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="buyerid != null">
+        buyerid,
+      </if>
+      <if test="sellerid != null">
+        sellerid,
+      </if>
+      <if test="paihao != null">
+        paihao,
+      </if>
+      <if test="zhuangtai != null">
+        zhuangtai,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="buyerid != null">
+        #{buyerid,jdbcType=INTEGER},
+      </if>
+      <if test="sellerid != null">
+        #{sellerid,jdbcType=INTEGER},
+      </if>
+      <if test="paihao != null">
+        #{paihao,jdbcType=INTEGER},
+      </if>
+      <if test="zhuangtai != null">
+        #{zhuangtai,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.vo.PaihaolistExample" resultType="java.lang.Long">
+    select count(*) from paihaolist
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update paihaolist
+    <set>
+      <if test="record.buyerid != null">
+        buyerid = #{record.buyerid,jdbcType=INTEGER},
+      </if>
+      <if test="record.sellerid != null">
+        sellerid = #{record.sellerid,jdbcType=INTEGER},
+      </if>
+      <if test="record.paihao != null">
+        paihao = #{record.paihao,jdbcType=INTEGER},
+      </if>
+      <if test="record.zhuangtai != null">
+        zhuangtai = #{record.zhuangtai,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update paihaolist
+    set buyerid = #{record.buyerid,jdbcType=INTEGER},
+      sellerid = #{record.sellerid,jdbcType=INTEGER},
+      paihao = #{record.paihao,jdbcType=INTEGER},
+      zhuangtai = #{record.zhuangtai,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+     <select id="huoqvxzdehao"  resultType="int">
+ select max(paihao) from paihaolist where sellerid=#{sellerid,jdbcType=INTEGER}
+  </select>
+    <insert id="kaishipaihao" parameterType="com.vo.Paihaolist">
+    insert into paihaolist (buyerid, sellerid, paihao,ordernumber,zhuangtai
+      )
+    values (#{buyerid,jdbcType=INTEGER}, #{sellerid,jdbcType=INTEGER}, #{paihao,jdbcType=INTEGER},#{ordernumber,jdbcType=INTEGER},1
+      )
+  </insert>
+       <select id="weiwancdingdanshu"  resultType="int">
+ select count(*) from paihaolist where sellerid=#{sellerid,jdbcType=INTEGER} and zhuangtai=1
+  </select>
+    <insert id="add0" parameterType="com.vo.Paihaolist">
+    insert into paihaolist ( sellerid, paihao)
+    values ( #{sellerid,jdbcType=INTEGER},0)
+  </insert>
+    <update id="over4" >
+    update paihaolist
+    set 
+      zhuangtai = 2
+where ordernumber=#{ordernumber,jdbcType=INTEGER} and sellerid=#{sellerid,jdbcType=INTEGER}
+  </update>
+        <select id="qianmianhaiyouduoshaoren"  resultType="int">
+ select count(*) from paihaolist where sellerid=#{sellerid,jdbcType=INTEGER} and zhuangtai=1
+  </select>
+          <select id="laiguodekehu"  resultType="com.vo.Paihaolist">
+ select  distinct * from paihaolist where sellerid=#{sellerid,jdbcType=INTEGER} and paihao!=0
+  </select>
+            <select id="huoqvxiadancishu"  resultType="int">
+ select  count(*) from paihaolist where buyerid=#{buyerid,jdbcType=INTEGER} 
+  </select>
+    <select id="huoqvshoudancishu"  resultType="int">
+ select  count(*) from paihaolist where sellerid=#{sellerid,jdbcType=INTEGER} and paihao!=0
+  </select>
+  <select id="shangjiatuijian1"  resultType="com.vo.Shtj1">
+ select count(*) cishu,sellerid shangjiaid from paihaolist where buyerid=#{buyerid,jdbcType=INTEGER} group by sellerid
+  </select>
+  <select id="shangjiatuijian2"  resultType="int">
+ select   buyerid  from paihaolist where sellerid=#{sellerid,jdbcType=INTEGER} and buyerid!=0 and buyerid!=#{buyerid,jdbcType=INTEGER} group by buyerid order by count(*) desc limit 1
+  </select>
+  <select id="shangjiatuijian3"  resultType="int">
+select sellerid shangjiaid from paihaolist where buyerid=#{buyerid,jdbcType=INTEGER} and sellerid!=#{sellerid,jdbcType=INTEGER} group by sellerid order by count(*) desc limit 1
+  </select>
+    <select id="shangjiatuijian4"  resultType="int">
+select count(*) cishu from paihaolist where buyerid=#{buyerid,jdbcType=INTEGER} and sellerid!=#{sellerid,jdbcType=INTEGER} group by sellerid order by count(*) desc limit 1
+  </select>
+</mapper>

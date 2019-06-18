@@ -1,0 +1,143 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>后台管理系统</title>
+<meta name="author" content="DeathGhost" />
+<link rel="stylesheet" type="text/css" href="css/style3.css">
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<![endif]-->
+<script src="js/jquery.js"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+ <script type="text/javascript">
+ $(document).ready(function(){
+	 $("#spzp2").load("../getspzp2");
+	 var q = document.getElementsByName('jutiorder');
+	 var a=q.length;
+	 
+	 for(var j=0;j<a;j++){
+		 var val=q[j].id;
+		 
+		 $("#"+val).load("anordernoqvzhi?q="+val);
+	 }
+      });
+ </script>
+<script>
+
+	(function($){
+		$(window).load(function(){
+			
+			$("a[rel='load-content']").click(function(e){
+				e.preventDefault();
+				var url=$(this).attr("href");
+				$.get(url,function(data){
+					$(".content .mCSB_container").append(data); //load new content inside .mCSB_container
+					//scroll-to appended content 
+					$(".content").mCustomScrollbar("scrollTo","h2:last");
+				});
+			});
+			
+			$(".content").delegate("a[href='top']","click",function(e){
+				e.preventDefault();
+				$(".content").mCustomScrollbar("scrollTo",$(this).attr("href"));
+			});
+			
+		});
+	})(jQuery);
+</script>
+
+</head>
+<body>
+<!--header-->
+<header>
+ <h1><img src="shopPic"/></h1>
+ <ul class="rt_nav">
+  <li><a href="http://www.mycodes.net" target="_blank" class="website_icon"><div id="spzp2"  ></a></li>
+  <li><a href="#" class="clear_icon">清除缓存</a></li>
+  <li><a href="#" class="admin_icon">DeathGhost</a></li>
+  <li><a href="#" class="set_icon">账号设置</a></li>
+  <li><a href="login.html" class="quit_icon">安全退出</a></li>
+ </ul>
+</header>
+<!--aside nav-->
+<!--aside nav-->
+<aside class="lt_aside_nav content mCustomScrollbar">
+ <h2><a href="index.html">起始页</a></h2>
+ <ul>
+  <li>
+   <dl>
+    <dt>菜品管理</dt>
+    <!--当前链接则添加class:active-->
+    <dd><a href="xinzengcaipin.jsp" class="active">新增菜品</a></dd>
+    <dd><a href="xiugaicaipinxinxi">修改菜品信息</a></dd>
+    <dd><a href="xiugaicaipintupian">修改菜品图片</a></dd>
+    <dd><a href="guanlicaipinfenlei.jsp">管理菜品分类</a></dd>
+   </dl>
+  </li>
+  <li>
+   <dl>
+    <dt>红包</dt>
+    <dd><a href="zijihongbaoguanli">红包管理</a></dd>
+   
+   </dl>
+  </li>
+  <li>
+   <dl>
+    <dt>订单管理</dt>
+    <dd><a href="gaishangpusuoyouweiwanchengdingdan">查看所有未完成订单</a></dd>
+    <dd><a href="getbendiansuoyoudingdan">查看所有订单</a></dd>
+
+   </dl>
+  </li>
+  <li>
+  <dl>
+    <dt>统计</dt>
+    <dd><a href="tongji1">订单数统计</a></dd>
+     <dd><a href="tongji2">收入统计</a></dd>
+     <dd><a href="tongji3">菜品销量统计</a></dd>
+         <dd><a href="tongji4">月度订单数统计</a></dd>
+     <dd><a href="tongji5">月度收入统计</a></dd>
+   </dl>
+  </li>
+  <li>
+   <dl>
+    <dt>配送与支付设置</dt>
+    <dd><a href="express_list.html">配送方式</a></dd>
+    <dd><a href="pay_list.html">支付方式</a></dd>
+   </dl>
+  </li>
+  <li>
+   <dl>
+    <dt>在线统计</dt>
+    <dd><a href="discharge_statistic.html">流量统计</a></dd>
+    <dd><a href="sales_volume.html">销售额统计</a></dd>
+   </dl>
+  </li>
+  <li>
+   <p class="btm_infor"></p>
+  </li>
+ </ul>
+</aside>
+
+<section class="rt_wrap content mCustomScrollbar">
+ <div class="rt_content">
+      <div class="page_title">
+       <h2 class="fl">未完成订单处理</h2>
+      </div>
+       <c:forEach  items="${rrr}" var="clazz">
+       <div name="jutiorder" id="${clazz}">
+             
+</div>
+				</c:forEach>
+       
+ </div>
+</section>
+<script src="js/amcharts.js" type="text/javascript"></script>
+<script src="js/serial.js" type="text/javascript"></script>
+<script src="js/pie.js" type="text/javascript"></script>
+
+</body>
+</html>

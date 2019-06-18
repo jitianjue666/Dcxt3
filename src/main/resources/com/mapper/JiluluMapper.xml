@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.JiluluMapper">
+  <resultMap id="BaseResultMap" type="com.vo.Jilulu">
+    <result column="bid" jdbcType="INTEGER" property="bid" />
+    <result column="sn" jdbcType="VARCHAR" property="sn" />
+    <result column="zonghuafei" jdbcType="DOUBLE" property="zonghuafei" />
+    <result column="zt" jdbcType="VARCHAR" property="zt" />
+    <result column="ono" jdbcType="INTEGER" property="ono" />
+    <result column="sid" jdbcType="INTEGER" property="sid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    bid, sn, zonghuafei, zt, ono, sid
+  </sql>
+  <select id="selectByExample" parameterType="com.vo.JiluluExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from jilulu
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.vo.JiluluExample">
+    delete from jilulu
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.vo.Jilulu">
+    insert into jilulu (bid, sn, zonghuafei, 
+      zt, ono, sid)
+    values (#{bid,jdbcType=INTEGER}, #{sn,jdbcType=VARCHAR}, #{zonghuafei,jdbcType=DOUBLE}, 
+      #{zt,jdbcType=VARCHAR}, #{ono,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.Jilulu">
+    insert into jilulu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bid != null">
+        bid,
+      </if>
+      <if test="sn != null">
+        sn,
+      </if>
+      <if test="zonghuafei != null">
+        zonghuafei,
+      </if>
+      <if test="zt != null">
+        zt,
+      </if>
+      <if test="ono != null">
+        ono,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bid != null">
+        #{bid,jdbcType=INTEGER},
+      </if>
+      <if test="sn != null">
+        #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="zonghuafei != null">
+        #{zonghuafei,jdbcType=DOUBLE},
+      </if>
+      <if test="zt != null">
+        #{zt,jdbcType=VARCHAR},
+      </if>
+      <if test="ono != null">
+        #{ono,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.vo.JiluluExample" resultType="java.lang.Long">
+    select count(*) from jilulu
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update jilulu
+    <set>
+      <if test="record.bid != null">
+        bid = #{record.bid,jdbcType=INTEGER},
+      </if>
+      <if test="record.sn != null">
+        sn = #{record.sn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zonghuafei != null">
+        zonghuafei = #{record.zonghuafei,jdbcType=DOUBLE},
+      </if>
+      <if test="record.zt != null">
+        zt = #{record.zt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ono != null">
+        ono = #{record.ono,jdbcType=INTEGER},
+      </if>
+      <if test="record.sid != null">
+        sid = #{record.sid,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update jilulu
+    set bid = #{record.bid,jdbcType=INTEGER},
+      sn = #{record.sn,jdbcType=VARCHAR},
+      zonghuafei = #{record.zonghuafei,jdbcType=DOUBLE},
+      zt = #{record.zt,jdbcType=VARCHAR},
+      ono = #{record.ono,jdbcType=INTEGER},
+      sid = #{record.sid,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <resultMap id="lkjh" type="com.vo.Jilulu">
+    <result column="bid" jdbcType="INTEGER" property="bid" />
+    <result column="sn" jdbcType="VARCHAR" property="sn" />
+    <result column="zonghuafei" jdbcType="DOUBLE" property="zonghuafei" />
+    <result column="zt" jdbcType="VARCHAR" property="zt" />
+    <result column="ono" jdbcType="INTEGER" property="ono" />
+    <result column="sid" jdbcType="INTEGER" property="sid" />
+
+        <!-- association字面意思关联，这里只专门做一对一关联； property表示是com.mybatis.bean.StudentTemp中的属性名称； 
+            javaType表示该属性是什么类型对象 -->
+        <association property="shouru" javaType="com.vo.Shouru">
+            <!-- property 表示com.mybatis.bean.Class中的属性； column 表示表中的列名 -->
+    <result column="renno" jdbcType="INTEGER" property="renno" />
+    <result column="dianjiaid" jdbcType="INTEGER" property="dianjiaid" />
+    <result column="yuanjia" jdbcType="DOUBLE" property="yuanjia" />
+    <result column="xianjia" jdbcType="DOUBLE" property="xianjia" />
+    <result column="dingdanhao" jdbcType="INTEGER" property="dingdanhao" />
+        </association>
+</resultMap>
+
+</mapper>

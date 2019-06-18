@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ShopapplyMapper">
+  <resultMap id="BaseResultMap" type="com.vo.Shopapply">
+    <id column="applyno" jdbcType="INTEGER" property="applyno" />
+    <result column="shopnumber" jdbcType="INTEGER" property="shopnumber" />
+    <result column="adminno" jdbcType="INTEGER" property="adminno" />
+    <result column="aptime" jdbcType="TIMESTAMP" property="aptime" />
+    <result column="dealtime" jdbcType="TIMESTAMP" property="dealtime" />
+    <result column="apstate" jdbcType="INTEGER" property="apstate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    applyno, shopnumber, adminno, aptime, dealtime, apstate
+  </sql>
+  <select id="selectByExample" parameterType="com.vo.ShopapplyExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from shopapply
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from shopapply
+    where applyno = #{applyno,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from shopapply
+    where applyno = #{applyno,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.vo.ShopapplyExample">
+    delete from shopapply
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.vo.Shopapply">
+    insert into shopapply (applyno, shopnumber, adminno, 
+      aptime, dealtime, apstate
+      )
+    values (#{applyno,jdbcType=INTEGER}, #{shopnumber,jdbcType=INTEGER}, #{adminno,jdbcType=INTEGER}, 
+      #{aptime,jdbcType=TIMESTAMP}, #{dealtime,jdbcType=TIMESTAMP}, #{apstate,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.Shopapply">
+    insert into shopapply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="applyno != null">
+        applyno,
+      </if>
+      <if test="shopnumber != null">
+        shopnumber,
+      </if>
+      <if test="adminno != null">
+        adminno,
+      </if>
+      <if test="aptime != null">
+        aptime,
+      </if>
+      <if test="dealtime != null">
+        dealtime,
+      </if>
+      <if test="apstate != null">
+        apstate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="applyno != null">
+        #{applyno,jdbcType=INTEGER},
+      </if>
+      <if test="shopnumber != null">
+        #{shopnumber,jdbcType=INTEGER},
+      </if>
+      <if test="adminno != null">
+        #{adminno,jdbcType=INTEGER},
+      </if>
+      <if test="aptime != null">
+        #{aptime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dealtime != null">
+        #{dealtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="apstate != null">
+        #{apstate,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.vo.ShopapplyExample" resultType="java.lang.Long">
+    select count(*) from shopapply
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update shopapply
+    <set>
+      <if test="record.applyno != null">
+        applyno = #{record.applyno,jdbcType=INTEGER},
+      </if>
+      <if test="record.shopnumber != null">
+        shopnumber = #{record.shopnumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.adminno != null">
+        adminno = #{record.adminno,jdbcType=INTEGER},
+      </if>
+      <if test="record.aptime != null">
+        aptime = #{record.aptime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.dealtime != null">
+        dealtime = #{record.dealtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.apstate != null">
+        apstate = #{record.apstate,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update shopapply
+    set applyno = #{record.applyno,jdbcType=INTEGER},
+      shopnumber = #{record.shopnumber,jdbcType=INTEGER},
+      adminno = #{record.adminno,jdbcType=INTEGER},
+      aptime = #{record.aptime,jdbcType=TIMESTAMP},
+      dealtime = #{record.dealtime,jdbcType=TIMESTAMP},
+      apstate = #{record.apstate,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vo.Shopapply">
+    update shopapply
+    <set>
+      <if test="shopnumber != null">
+        shopnumber = #{shopnumber,jdbcType=INTEGER},
+      </if>
+      <if test="adminno != null">
+        adminno = #{adminno,jdbcType=INTEGER},
+      </if>
+      <if test="aptime != null">
+        aptime = #{aptime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dealtime != null">
+        dealtime = #{dealtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="apstate != null">
+        apstate = #{apstate,jdbcType=INTEGER},
+      </if>
+    </set>
+    where applyno = #{applyno,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vo.Shopapply">
+    update shopapply
+    set shopnumber = #{shopnumber,jdbcType=INTEGER},
+      adminno = #{adminno,jdbcType=INTEGER},
+      aptime = #{aptime,jdbcType=TIMESTAMP},
+      dealtime = #{dealtime,jdbcType=TIMESTAMP},
+      apstate = #{apstate,jdbcType=INTEGER}
+    where applyno = #{applyno,jdbcType=INTEGER}
+  </update>
+   <insert id="shopshenqing3" parameterType="com.vo.Shopapply">
+    insert into shopapply (shopnumber,
+      aptime, apstate
+      )
+    values (#{shopnumber,jdbcType=INTEGER},
+      #{aptime,jdbcType=TIMESTAMP},'1'
+      )
+  </insert>
+    <update id="updateadminno">
+    update shopapply
+    set 
+      adminno = #{adminno,jdbcType=INTEGER}
+       where shopnumber = #{shopnumber,jdbcType=INTEGER}
+  </update>
+      <update id="updatedealtime">
+    update shopapply
+    set 
+      dealtime = #{dealtime,jdbcType=TIMESTAMP}
+       where shopnumber = #{shopnumber,jdbcType=INTEGER}
+  </update>
+      <update id="updateapstate">
+    update shopapply
+    set 
+      apstate = 2
+       where shopnumber = #{shopnumber,jdbcType=INTEGER}
+  </update>
+      <update id="updateapstate2">
+    update shopapply
+    set 
+      apstate = 0
+       where shopnumber = #{shopnumber,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,166 @@
+2019-04-29 17:39:45 JakartaCommonsLoggingImpl.java DEBUG Logging initialized using 'org.mybatis.generator.logging.commons.JakartaCommonsLoggingLogFactory@3b6eb2ec' adapter.
+  2019-04-29 17:39:45 JakartaCommonsLoggingImpl.java DEBUG Retrieving column information for table "xiaofeizhe"
+  2019-04-29 17:39:45 JakartaCommonsLoggingImpl.java DEBUG Found column "xiaofeizhebianhao", data type 4, in table "dcxt..xiaofeizhe"
+  2019-04-29 17:39:45 JakartaCommonsLoggingImpl.java DEBUG Found column "xiaofeizheid", data type 12, in table "dcxt..xiaofeizhe"
+  2019-04-29 17:39:45 JakartaCommonsLoggingImpl.java DEBUG Found column "xiaofeizhemima", data type 12, in table "dcxt..xiaofeizhe"
+  2019-04-29 17:39:45 JakartaCommonsLoggingImpl.java DEBUG Found column "xiaofeizheyouxiang", data type 12, in table "dcxt..xiaofeizhe"
+  2019-04-29 17:39:45 JakartaCommonsLoggingImpl.java DEBUG Found column "xiaofeizhedianhua", data type -5, in table "dcxt..xiaofeizhe"
+  2019-04-29 17:39:45 JakartaCommonsLoggingImpl.java DEBUG Found column "xiaofeizhezhuceshijian", data type 93, in table "dcxt..xiaofeizhe"
+  2019-04-29 17:39:45 JakartaCommonsLoggingImpl.java DEBUG Found column "xiaofeizhexiadancishu", data type 4, in table "dcxt..xiaofeizhe"
+  2019-04-29 17:39:45 JakartaCommonsLoggingImpl.java DEBUG Found column "xiaofeizhegongjixiaofeijine", data type 8, in table "dcxt..xiaofeizhe"
+  2019-04-29 17:40:14 JakartaCommonsLoggingImpl.java DEBUG Logging initialized using 'org.mybatis.generator.logging.commons.JakartaCommonsLoggingLogFactory@3b6eb2ec' adapter.
+  2019-04-29 17:40:14 JakartaCommonsLoggingImpl.java DEBUG Retrieving column information for table "shangpu"
+  2019-04-29 17:40:14 JakartaCommonsLoggingImpl.java DEBUG Found column "shangjiabianhao", data type 4, in table "dcxt..shangpu"
+  2019-04-29 17:40:14 JakartaCommonsLoggingImpl.java DEBUG Found column "shangpuyongyouzhebianhao", data type 4, in table "dcxt..shangpu"
+  2019-04-29 17:40:14 JakartaCommonsLoggingImpl.java DEBUG Found column "shangpuyongyouzheid", data type 12, in table "dcxt..shangpu"
+  2019-04-29 17:40:14 JakartaCommonsLoggingImpl.java DEBUG Found column "shangpumingzi", data type 12, in table "dcxt..shangpu"
+  2019-04-29 17:40:14 JakartaCommonsLoggingImpl.java DEBUG Found column "shangpushenqingshijian", data type 93, in table "dcxt..shangpu"
+  2019-04-29 17:40:14 JakartaCommonsLoggingImpl.java DEBUG Found column "chulishenqingshijian", data type 93, in table "dcxt..shangpu"
+  2019-04-29 17:40:14 JakartaCommonsLoggingImpl.java DEBUG Found column "shangpuzhuangtai", data type 12, in table "dcxt..shangpu"
+  2019-04-29 17:40:14 JakartaCommonsLoggingImpl.java DEBUG Found column "shangpuzongxiaoliang", data type 4, in table "dcxt..shangpu"
+  2019-04-29 17:40:14 JakartaCommonsLoggingImpl.java DEBUG Found column "shangpuzongshouru", data type 8, in table "dcxt..shangpu"
+  2019-06-11 12:42:26 RequestAddCookies.java DEBUG CookieSpec selected: best-match
+  2019-06-11 12:42:26 RequestAuthCache.java DEBUG Auth cache not set in the context
+  2019-06-11 12:42:26 PoolingHttpClientConnectionManager.java DEBUG Connection request: [route: {s}->https://open.ucpaas.com:443][total kept alive: 0; route allocated: 0 of 20; total allocated: 0 of 200]
+  2019-06-11 12:42:26 PoolingHttpClientConnectionManager.java DEBUG Connection leased: [id: 0][route: {s}->https://open.ucpaas.com:443][total kept alive: 0; route allocated: 1 of 20; total allocated: 1 of 200]
+  2019-06-11 12:42:26 MainClientExec.java DEBUG Opening connection {s}->https://open.ucpaas.com:443
+  2019-06-11 12:42:26 HttpClientConnectionOperator.java DEBUG Connecting to open.ucpaas.com/103.53.125.57:443
+  2019-06-11 12:42:26 HttpClientConnectionOperator.java DEBUG Connection established 10.181.76.139:59546<->103.53.125.57:443
+  2019-06-11 12:42:26 MainClientExec.java DEBUG Executing request POST /ol/sms/sendsms HTTP/1.1
+  2019-06-11 12:42:26 MainClientExec.java DEBUG Target auth state: UNCHALLENGED
+  2019-06-11 12:42:26 MainClientExec.java DEBUG Proxy auth state: UNCHALLENGED
+  2019-06-11 12:42:26 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> POST /ol/sms/sendsms HTTP/1.1
+  2019-06-11 12:42:26 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> Accept: application/json
+  2019-06-11 12:42:26 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> Content-Type: application/json;charset=utf-8
+  2019-06-11 12:42:26 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> Content-Length: 195
+  2019-06-11 12:42:26 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> Host: open.ucpaas.com
+  2019-06-11 12:42:26 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> Connection: Keep-Alive
+  2019-06-11 12:42:26 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> User-Agent: Apache-HttpClient/4.3.6 (java 1.5)
+  2019-06-11 12:42:26 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> Accept-Encoding: gzip,deflate
+  2019-06-11 12:42:26 Wire.java DEBUG http-outgoing-0 >> "POST /ol/sms/sendsms HTTP/1.1[\r][\n]"
+  2019-06-11 12:42:26 Wire.java DEBUG http-outgoing-0 >> "Accept: application/json[\r][\n]"
+  2019-06-11 12:42:26 Wire.java DEBUG http-outgoing-0 >> "Content-Type: application/json;charset=utf-8[\r][\n]"
+  2019-06-11 12:42:26 Wire.java DEBUG http-outgoing-0 >> "Content-Length: 195[\r][\n]"
+  2019-06-11 12:42:26 Wire.java DEBUG http-outgoing-0 >> "Host: open.ucpaas.com[\r][\n]"
+  2019-06-11 12:42:26 Wire.java DEBUG http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+  2019-06-11 12:42:26 Wire.java DEBUG http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.3.6 (java 1.5)[\r][\n]"
+  2019-06-11 12:42:26 Wire.java DEBUG http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+  2019-06-11 12:42:26 Wire.java DEBUG http-outgoing-0 >> "[\r][\n]"
+  2019-06-11 12:42:26 Wire.java DEBUG http-outgoing-0 >> "{"uid":"","param":"40","appid":"2b592583120d429c89b56d27798f2cd5","mobile":"18846939958","templateid":"460495","sid":"d6f57cfb5dcf2a8b469847445b4b68b4","token":"b395dfd8d7d4b2cb99d644d272da5027"}"
+  2019-06-11 12:42:27 Wire.java DEBUG http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+  2019-06-11 12:42:27 Wire.java DEBUG http-outgoing-0 << "Server: nginx[\r][\n]"
+  2019-06-11 12:42:27 Wire.java DEBUG http-outgoing-0 << "Date: Tue, 11 Jun 2019 04:42:27 GMT[\r][\n]"
+  2019-06-11 12:42:27 Wire.java DEBUG http-outgoing-0 << "Content-Type: application/json[\r][\n]"
+  2019-06-11 12:42:27 Wire.java DEBUG http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+  2019-06-11 12:42:27 Wire.java DEBUG http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+  2019-06-11 12:42:27 Wire.java DEBUG http-outgoing-0 << "[\r][\n]"
+  2019-06-11 12:42:27 Wire.java DEBUG http-outgoing-0 << "97[\r][\n]"
+  2019-06-11 12:42:27 Wire.java DEBUG http-outgoing-0 << "{"code":"000000","count":"1","create_date":"2019-06-11 12:42:27","mobile":"18846939958","msg":"OK","smsid":"c69a661968ec53c767d12abaaa9163f4","uid":""}[\r][\n]"
+  2019-06-11 12:42:27 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 << HTTP/1.1 200 OK
+  2019-06-11 12:42:27 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 << Server: nginx
+  2019-06-11 12:42:27 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 << Date: Tue, 11 Jun 2019 04:42:27 GMT
+  2019-06-11 12:42:27 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 << Content-Type: application/json
+  2019-06-11 12:42:27 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 << Transfer-Encoding: chunked
+  2019-06-11 12:42:27 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 << Connection: keep-alive
+  2019-06-11 12:42:27 MainClientExec.java DEBUG Connection can be kept alive indefinitely
+  2019-06-11 12:42:27 Wire.java DEBUG http-outgoing-0 << "0[\r][\n]"
+  2019-06-11 12:42:27 Wire.java DEBUG http-outgoing-0 << "[\r][\n]"
+  2019-06-11 12:42:27 PoolingHttpClientConnectionManager.java DEBUG Connection [id: 0][route: {s}->https://open.ucpaas.com:443] can be kept alive indefinitely
+  2019-06-11 12:42:27 PoolingHttpClientConnectionManager.java DEBUG Connection released: [id: 0][route: {s}->https://open.ucpaas.com:443][total kept alive: 1; route allocated: 1 of 20; total allocated: 1 of 200]
+  2019-06-11 12:43:18 RequestAddCookies.java DEBUG CookieSpec selected: best-match
+  2019-06-11 12:43:18 RequestAuthCache.java DEBUG Auth cache not set in the context
+  2019-06-11 12:43:18 PoolingHttpClientConnectionManager.java DEBUG Connection request: [route: {s}->https://open.ucpaas.com:443][total kept alive: 0; route allocated: 0 of 20; total allocated: 0 of 200]
+  2019-06-11 12:43:18 PoolingHttpClientConnectionManager.java DEBUG Connection leased: [id: 0][route: {s}->https://open.ucpaas.com:443][total kept alive: 0; route allocated: 1 of 20; total allocated: 1 of 200]
+  2019-06-11 12:43:18 MainClientExec.java DEBUG Opening connection {s}->https://open.ucpaas.com:443
+  2019-06-11 12:43:18 HttpClientConnectionOperator.java DEBUG Connecting to open.ucpaas.com/103.53.125.57:443
+  2019-06-11 12:43:18 HttpClientConnectionOperator.java DEBUG Connection established 10.181.76.139:59617<->103.53.125.57:443
+  2019-06-11 12:43:18 MainClientExec.java DEBUG Executing request POST /ol/sms/sendsms HTTP/1.1
+  2019-06-11 12:43:18 MainClientExec.java DEBUG Target auth state: UNCHALLENGED
+  2019-06-11 12:43:18 MainClientExec.java DEBUG Proxy auth state: UNCHALLENGED
+  2019-06-11 12:43:18 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> POST /ol/sms/sendsms HTTP/1.1
+  2019-06-11 12:43:18 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> Accept: application/json
+  2019-06-11 12:43:18 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> Content-Type: application/json;charset=utf-8
+  2019-06-11 12:43:18 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> Content-Length: 205
+  2019-06-11 12:43:18 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> Host: open.ucpaas.com
+  2019-06-11 12:43:18 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> Connection: Keep-Alive
+  2019-06-11 12:43:18 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> User-Agent: Apache-HttpClient/4.3.6 (java 1.5)
+  2019-06-11 12:43:18 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> Accept-Encoding: gzip,deflate
+  2019-06-11 12:43:18 Wire.java DEBUG http-outgoing-0 >> "POST /ol/sms/sendsms HTTP/1.1[\r][\n]"
+  2019-06-11 12:43:18 Wire.java DEBUG http-outgoing-0 >> "Accept: application/json[\r][\n]"
+  2019-06-11 12:43:18 Wire.java DEBUG http-outgoing-0 >> "Content-Type: application/json;charset=utf-8[\r][\n]"
+  2019-06-11 12:43:18 Wire.java DEBUG http-outgoing-0 >> "Content-Length: 205[\r][\n]"
+  2019-06-11 12:43:18 Wire.java DEBUG http-outgoing-0 >> "Host: open.ucpaas.com[\r][\n]"
+  2019-06-11 12:43:18 Wire.java DEBUG http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+  2019-06-11 12:43:18 Wire.java DEBUG http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.3.6 (java 1.5)[\r][\n]"
+  2019-06-11 12:43:18 Wire.java DEBUG http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+  2019-06-11 12:43:18 Wire.java DEBUG http-outgoing-0 >> "[\r][\n]"
+  2019-06-11 12:43:18 Wire.java DEBUG http-outgoing-0 >> "{"uid":"","param":"[0xe7][0x88][0xb5][0xe7][0x88][0xb7][0xef][0xbc][0x8c]888","appid":"2b592583120d429c89b56d27798f2cd5","mobile":"18846939958","templateid":"460780","sid":"d6f57cfb5dcf2a8b469847445b4b68b4","token":"b395dfd8d7d4b2cb99d644d272da5027"}"
+  2019-06-11 12:43:18 Wire.java DEBUG http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+  2019-06-11 12:43:18 Wire.java DEBUG http-outgoing-0 << "Server: nginx[\r][\n]"
+  2019-06-11 12:43:18 Wire.java DEBUG http-outgoing-0 << "Date: Tue, 11 Jun 2019 04:43:19 GMT[\r][\n]"
+  2019-06-11 12:43:18 Wire.java DEBUG http-outgoing-0 << "Content-Type: application/json[\r][\n]"
+  2019-06-11 12:43:18 Wire.java DEBUG http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+  2019-06-11 12:43:18 Wire.java DEBUG http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+  2019-06-11 12:43:18 Wire.java DEBUG http-outgoing-0 << "[\r][\n]"
+  2019-06-11 12:43:18 Wire.java DEBUG http-outgoing-0 << "9c[\r][\n]"
+  2019-06-11 12:43:18 Wire.java DEBUG http-outgoing-0 << "{"code":"105112","count":"0","create_date":"","mobile":"18846939958","msg":"[0xe8][0xaf][0xb7][0xe6][0xb1][0x82][0xe7][0x9a][0x84][0xe5][0x8f][0x82][0xe6][0x95][0xb0](param)[0xe4][0xb8][0x8e][0xe6][0xa8][0xa1][0xe6][0x9d][0xbf][0xe4][0xb8][0x8a][0xe7][0x9a][0x84][0xe5][0x8f][0x98][0xe9][0x87][0x8f][0xe6][0x95][0xb0][0xe9][0x87][0x8f][0xe4][0xb8][0x8d][0xe4][0xb8][0x80][0xe8][0x87][0xb4]","smsid":"","uid":""}[\r][\n]"
+  2019-06-11 12:43:18 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 << HTTP/1.1 200 OK
+  2019-06-11 12:43:18 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 << Server: nginx
+  2019-06-11 12:43:18 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 << Date: Tue, 11 Jun 2019 04:43:19 GMT
+  2019-06-11 12:43:18 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 << Content-Type: application/json
+  2019-06-11 12:43:18 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 << Transfer-Encoding: chunked
+  2019-06-11 12:43:18 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 << Connection: keep-alive
+  2019-06-11 12:43:18 MainClientExec.java DEBUG Connection can be kept alive indefinitely
+  2019-06-11 12:43:18 Wire.java DEBUG http-outgoing-0 << "0[\r][\n]"
+  2019-06-11 12:43:18 Wire.java DEBUG http-outgoing-0 << "[\r][\n]"
+  2019-06-11 12:43:18 PoolingHttpClientConnectionManager.java DEBUG Connection [id: 0][route: {s}->https://open.ucpaas.com:443] can be kept alive indefinitely
+  2019-06-11 12:43:18 PoolingHttpClientConnectionManager.java DEBUG Connection released: [id: 0][route: {s}->https://open.ucpaas.com:443][total kept alive: 1; route allocated: 1 of 20; total allocated: 1 of 200]
+  2019-06-11 12:44:17 RequestAddCookies.java DEBUG CookieSpec selected: best-match
+  2019-06-11 12:44:17 RequestAuthCache.java DEBUG Auth cache not set in the context
+  2019-06-11 12:44:17 PoolingHttpClientConnectionManager.java DEBUG Connection request: [route: {s}->https://open.ucpaas.com:443][total kept alive: 0; route allocated: 0 of 20; total allocated: 0 of 200]
+  2019-06-11 12:44:17 PoolingHttpClientConnectionManager.java DEBUG Connection leased: [id: 0][route: {s}->https://open.ucpaas.com:443][total kept alive: 0; route allocated: 1 of 20; total allocated: 1 of 200]
+  2019-06-11 12:44:17 MainClientExec.java DEBUG Opening connection {s}->https://open.ucpaas.com:443
+  2019-06-11 12:44:17 HttpClientConnectionOperator.java DEBUG Connecting to open.ucpaas.com/103.53.125.57:443
+  2019-06-11 12:44:17 HttpClientConnectionOperator.java DEBUG Connection established 10.181.76.139:59730<->103.53.125.57:443
+  2019-06-11 12:44:17 MainClientExec.java DEBUG Executing request POST /ol/sms/sendsms HTTP/1.1
+  2019-06-11 12:44:17 MainClientExec.java DEBUG Target auth state: UNCHALLENGED
+  2019-06-11 12:44:17 MainClientExec.java DEBUG Proxy auth state: UNCHALLENGED
+  2019-06-11 12:44:17 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> POST /ol/sms/sendsms HTTP/1.1
+  2019-06-11 12:44:17 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> Accept: application/json
+  2019-06-11 12:44:17 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> Content-Type: application/json;charset=utf-8
+  2019-06-11 12:44:17 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> Content-Length: 203
+  2019-06-11 12:44:17 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> Host: open.ucpaas.com
+  2019-06-11 12:44:17 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> Connection: Keep-Alive
+  2019-06-11 12:44:17 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> User-Agent: Apache-HttpClient/4.3.6 (java 1.5)
+  2019-06-11 12:44:17 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 >> Accept-Encoding: gzip,deflate
+  2019-06-11 12:44:17 Wire.java DEBUG http-outgoing-0 >> "POST /ol/sms/sendsms HTTP/1.1[\r][\n]"
+  2019-06-11 12:44:17 Wire.java DEBUG http-outgoing-0 >> "Accept: application/json[\r][\n]"
+  2019-06-11 12:44:17 Wire.java DEBUG http-outgoing-0 >> "Content-Type: application/json;charset=utf-8[\r][\n]"
+  2019-06-11 12:44:17 Wire.java DEBUG http-outgoing-0 >> "Content-Length: 203[\r][\n]"
+  2019-06-11 12:44:17 Wire.java DEBUG http-outgoing-0 >> "Host: open.ucpaas.com[\r][\n]"
+  2019-06-11 12:44:17 Wire.java DEBUG http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+  2019-06-11 12:44:17 Wire.java DEBUG http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.3.6 (java 1.5)[\r][\n]"
+  2019-06-11 12:44:17 Wire.java DEBUG http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+  2019-06-11 12:44:17 Wire.java DEBUG http-outgoing-0 >> "[\r][\n]"
+  2019-06-11 12:44:17 Wire.java DEBUG http-outgoing-0 >> "{"uid":"","param":"[0xe7][0x88][0xb5][0xe7][0x88][0xb7],888","appid":"2b592583120d429c89b56d27798f2cd5","mobile":"18846939958","templateid":"460780","sid":"d6f57cfb5dcf2a8b469847445b4b68b4","token":"b395dfd8d7d4b2cb99d644d272da5027"}"
+  2019-06-11 12:44:17 Wire.java DEBUG http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+  2019-06-11 12:44:17 Wire.java DEBUG http-outgoing-0 << "Server: nginx[\r][\n]"
+  2019-06-11 12:44:17 Wire.java DEBUG http-outgoing-0 << "Date: Tue, 11 Jun 2019 04:44:18 GMT[\r][\n]"
+  2019-06-11 12:44:17 Wire.java DEBUG http-outgoing-0 << "Content-Type: application/json[\r][\n]"
+  2019-06-11 12:44:17 Wire.java DEBUG http-outgoing-0 << "Transfer-Encoding: chunked[\r][\n]"
+  2019-06-11 12:44:17 Wire.java DEBUG http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+  2019-06-11 12:44:17 Wire.java DEBUG http-outgoing-0 << "[\r][\n]"
+  2019-06-11 12:44:17 Wire.java DEBUG http-outgoing-0 << "97[\r][\n]"
+  2019-06-11 12:44:17 Wire.java DEBUG http-outgoing-0 << "{"code":"000000","count":"1","create_date":"2019-06-11 12:44:18","mobile":"18846939958","msg":"OK","smsid":"55f6bcb0c6fdcee3876523f2c8c7998e","uid":""}[\r][\n]"
+  2019-06-11 12:44:17 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 << HTTP/1.1 200 OK
+  2019-06-11 12:44:17 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 << Server: nginx
+  2019-06-11 12:44:17 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 << Date: Tue, 11 Jun 2019 04:44:18 GMT
+  2019-06-11 12:44:17 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 << Content-Type: application/json
+  2019-06-11 12:44:17 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 << Transfer-Encoding: chunked
+  2019-06-11 12:44:17 LoggingManagedHttpClientConnection.java DEBUG http-outgoing-0 << Connection: keep-alive
+  2019-06-11 12:44:17 MainClientExec.java DEBUG Connection can be kept alive indefinitely
+  2019-06-11 12:44:17 Wire.java DEBUG http-outgoing-0 << "0[\r][\n]"
+  2019-06-11 12:44:17 Wire.java DEBUG http-outgoing-0 << "[\r][\n]"
+  2019-06-11 12:44:17 PoolingHttpClientConnectionManager.java DEBUG Connection [id: 0][route: {s}->https://open.ucpaas.com:443] can be kept alive indefinitely
+  2019-06-11 12:44:17 PoolingHttpClientConnectionManager.java DEBUG Connection released: [id: 0][route: {s}->https://open.ucpaas.com:443][total kept alive: 1; route allocated: 1 of 20; total allocated: 1 of 200]
+  

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ShopphotoMapper">
+  <resultMap id="BaseResultMap" type="com.vo.Shopphoto">
+    <result column="sno" jdbcType="INTEGER" property="sno" />
+    <result column="sozjno" jdbcType="BIGINT" property="sozjno" />
+    <result column="soname" jdbcType="VARCHAR" property="soname" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.vo.Shopphoto">
+    <result column="sphoto" jdbcType="LONGVARBINARY" property="sphoto" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    sno, sozjno, soname
+  </sql>
+  <sql id="Blob_Column_List">
+    sphoto
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.vo.ShopphotoExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from shopphoto
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.vo.ShopphotoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from shopphoto
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.vo.ShopphotoExample">
+    delete from shopphoto
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.vo.Shopphoto">
+    insert into shopphoto (sno, sozjno, soname, 
+      sphoto)
+    values (#{sno,jdbcType=INTEGER}, #{sozjno,jdbcType=INTEGER}, #{soname,jdbcType=VARCHAR}, 
+      #{sphoto,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.Shopphoto">
+    insert into shopphoto
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sno != null">
+        sno,
+      </if>
+      <if test="sozjno != null">
+        sozjno,
+      </if>
+      <if test="soname != null">
+        soname,
+      </if>
+      <if test="sphoto != null">
+        sphoto,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sno != null">
+        #{sno,jdbcType=INTEGER},
+      </if>
+      <if test="sozjno != null">
+        #{sozjno,jdbcType=INTEGER},
+      </if>
+      <if test="soname != null">
+        #{soname,jdbcType=VARCHAR},
+      </if>
+      <if test="sphoto != null">
+        #{sphoto,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.vo.ShopphotoExample" resultType="java.lang.Long">
+    select count(*) from shopphoto
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update shopphoto
+    <set>
+      <if test="record.sno != null">
+        sno = #{record.sno,jdbcType=INTEGER},
+      </if>
+      <if test="record.sozjno != null">
+        sozjno = #{record.sozjno,jdbcType=INTEGER},
+      </if>
+      <if test="record.soname != null">
+        soname = #{record.soname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sphoto != null">
+        sphoto = #{record.sphoto,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update shopphoto
+    set sno = #{record.sno,jdbcType=INTEGER},
+      sozjno = #{record.sozjno,jdbcType=INTEGER},
+      soname = #{record.soname,jdbcType=VARCHAR},
+      sphoto = #{record.sphoto,jdbcType=LONGVARBINARY}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update shopphoto
+    set sno = #{record.sno,jdbcType=INTEGER},
+      sozjno = #{record.sozjno,jdbcType=INTEGER},
+      soname = #{record.soname,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+    <insert id="shangpushenqing2" parameterType="com.vo.Shopphoto">
+    insert into shopphoto (sno, sozjno, soname,sphoto
+     )
+    values (#{sno,jdbcType=INTEGER}, #{sozjno,jdbcType=BIGINT}, #{soname,jdbcType=VARCHAR},#{sphoto,jdbcType=BLOB}
+      )
+  </insert>
+    <insert id="shangpushenqing4" parameterType="com.vo.Shopphoto">
+    insert into shopphoto (sno, sozjno, soname
+     )
+    values (#{sno,jdbcType=INTEGER}, #{sozjno,jdbcType=BIGINT}, #{soname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <select id="sp"  resultType="com.vo.Shopphoto">
+    select * from shopphoto where soname=#{soname}
+  </select>
+   <select id="sp2"  resultType="com.vo.Shopphoto">
+    select * from shopphoto where sno=#{sno}
+  </select>
+</mapper>

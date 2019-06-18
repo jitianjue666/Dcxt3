@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ZhifuMapper">
+  <resultMap id="BaseResultMap" type="com.vo.Zhifu">
+    <id column="zhifuid" jdbcType="INTEGER" property="zhifuid" />
+    <result column="zhifustate" jdbcType="INTEGER" property="zhifustate" />
+    <result column="dingdanyuanjia" jdbcType="DOUBLE" property="dingdanyuanjia" />
+    <result column="dingdanxianjia" jdbcType="DOUBLE" property="dingdanxianjia" />
+    <result column="goumaizhe" jdbcType="INTEGER" property="goumaizhe" />
+    <result column="dianjia" jdbcType="INTEGER" property="dianjia" />
+    <result column="chuangjianshijian" jdbcType="TIMESTAMP" property="chuangjianshijian" />
+    <result column="jieshushijian" jdbcType="TIMESTAMP" property="jieshushijian" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    zhifuid, zhifustate, dingdanyuanjia, dingdanxianjia, goumaizhe, dianjia, chuangjianshijian, 
+    jieshushijian
+  </sql>
+  <select id="selectByExample" parameterType="com.vo.ZhifuExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from zhifu
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from zhifu
+    where zhifuid = #{zhifuid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from zhifu
+    where zhifuid = #{zhifuid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.vo.ZhifuExample">
+    delete from zhifu
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.vo.Zhifu">
+    insert into zhifu (zhifuid, zhifustate, dingdanyuanjia, 
+      dingdanxianjia, goumaizhe, dianjia, 
+      chuangjianshijian, jieshushijian)
+    values (#{zhifuid,jdbcType=INTEGER}, #{zhifustate,jdbcType=INTEGER}, #{dingdanyuanjia,jdbcType=DOUBLE}, 
+      #{dingdanxianjia,jdbcType=DOUBLE}, #{goumaizhe,jdbcType=INTEGER}, #{dianjia,jdbcType=INTEGER}, 
+      #{chuangjianshijian,jdbcType=TIMESTAMP}, #{jieshushijian,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.Zhifu">
+    insert into zhifu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="zhifuid != null">
+        zhifuid,
+      </if>
+      <if test="zhifustate != null">
+        zhifustate,
+      </if>
+      <if test="dingdanyuanjia != null">
+        dingdanyuanjia,
+      </if>
+      <if test="dingdanxianjia != null">
+        dingdanxianjia,
+      </if>
+      <if test="goumaizhe != null">
+        goumaizhe,
+      </if>
+      <if test="dianjia != null">
+        dianjia,
+      </if>
+      <if test="chuangjianshijian != null">
+        chuangjianshijian,
+      </if>
+      <if test="jieshushijian != null">
+        jieshushijian,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="zhifuid != null">
+        #{zhifuid,jdbcType=INTEGER},
+      </if>
+      <if test="zhifustate != null">
+        #{zhifustate,jdbcType=INTEGER},
+      </if>
+      <if test="dingdanyuanjia != null">
+        #{dingdanyuanjia,jdbcType=DOUBLE},
+      </if>
+      <if test="dingdanxianjia != null">
+        #{dingdanxianjia,jdbcType=DOUBLE},
+      </if>
+      <if test="goumaizhe != null">
+        #{goumaizhe,jdbcType=INTEGER},
+      </if>
+      <if test="dianjia != null">
+        #{dianjia,jdbcType=INTEGER},
+      </if>
+      <if test="chuangjianshijian != null">
+        #{chuangjianshijian,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jieshushijian != null">
+        #{jieshushijian,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.vo.ZhifuExample" resultType="java.lang.Long">
+    select count(*) from zhifu
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update zhifu
+    <set>
+      <if test="record.zhifuid != null">
+        zhifuid = #{record.zhifuid,jdbcType=INTEGER},
+      </if>
+      <if test="record.zhifustate != null">
+        zhifustate = #{record.zhifustate,jdbcType=INTEGER},
+      </if>
+      <if test="record.dingdanyuanjia != null">
+        dingdanyuanjia = #{record.dingdanyuanjia,jdbcType=DOUBLE},
+      </if>
+      <if test="record.dingdanxianjia != null">
+        dingdanxianjia = #{record.dingdanxianjia,jdbcType=DOUBLE},
+      </if>
+      <if test="record.goumaizhe != null">
+        goumaizhe = #{record.goumaizhe,jdbcType=INTEGER},
+      </if>
+      <if test="record.dianjia != null">
+        dianjia = #{record.dianjia,jdbcType=INTEGER},
+      </if>
+      <if test="record.chuangjianshijian != null">
+        chuangjianshijian = #{record.chuangjianshijian,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.jieshushijian != null">
+        jieshushijian = #{record.jieshushijian,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update zhifu
+    set zhifuid = #{record.zhifuid,jdbcType=INTEGER},
+      zhifustate = #{record.zhifustate,jdbcType=INTEGER},
+      dingdanyuanjia = #{record.dingdanyuanjia,jdbcType=DOUBLE},
+      dingdanxianjia = #{record.dingdanxianjia,jdbcType=DOUBLE},
+      goumaizhe = #{record.goumaizhe,jdbcType=INTEGER},
+      dianjia = #{record.dianjia,jdbcType=INTEGER},
+      chuangjianshijian = #{record.chuangjianshijian,jdbcType=TIMESTAMP},
+      jieshushijian = #{record.jieshushijian,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vo.Zhifu">
+    update zhifu
+    <set>
+      <if test="zhifustate != null">
+        zhifustate = #{zhifustate,jdbcType=INTEGER},
+      </if>
+      <if test="dingdanyuanjia != null">
+        dingdanyuanjia = #{dingdanyuanjia,jdbcType=DOUBLE},
+      </if>
+      <if test="dingdanxianjia != null">
+        dingdanxianjia = #{dingdanxianjia,jdbcType=DOUBLE},
+      </if>
+      <if test="goumaizhe != null">
+        goumaizhe = #{goumaizhe,jdbcType=INTEGER},
+      </if>
+      <if test="dianjia != null">
+        dianjia = #{dianjia,jdbcType=INTEGER},
+      </if>
+      <if test="chuangjianshijian != null">
+        chuangjianshijian = #{chuangjianshijian,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jieshushijian != null">
+        jieshushijian = #{jieshushijian,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where zhifuid = #{zhifuid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vo.Zhifu">
+    update zhifu
+    set zhifustate = #{zhifustate,jdbcType=INTEGER},
+      dingdanyuanjia = #{dingdanyuanjia,jdbcType=DOUBLE},
+      dingdanxianjia = #{dingdanxianjia,jdbcType=DOUBLE},
+      goumaizhe = #{goumaizhe,jdbcType=INTEGER},
+      dianjia = #{dianjia,jdbcType=INTEGER},
+      chuangjianshijian = #{chuangjianshijian,jdbcType=TIMESTAMP},
+      jieshushijian = #{jieshushijian,jdbcType=TIMESTAMP}
+    where zhifuid = #{zhifuid,jdbcType=INTEGER}
+  </update>
+</mapper>

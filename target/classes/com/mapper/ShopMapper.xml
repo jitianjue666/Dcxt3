@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ShopMapper">
+  <resultMap id="BaseResultMap" type="com.vo.Shop">
+    <id column="shopno" jdbcType="INTEGER" property="shopno" />
+    <result column="ownerno" jdbcType="INTEGER" property="ownerno" />
+    <result column="shopname" jdbcType="VARCHAR" property="shopname" />
+    <result column="shopstate" jdbcType="INTEGER" property="shopstate" />
+    <result column="shopapplytime" jdbcType="TIMESTAMP" property="shopapplytime" />
+    <result column="shopadopttime" jdbcType="TIMESTAMP" property="shopadopttime" />
+    <result column="shopvolume" jdbcType="INTEGER" property="shopvolume" />
+    <result column="dcategory" jdbcType="VARCHAR" property="dcategory" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    shopno, ownerno, shopname, shopstate, shopapplytime, shopadopttime, shopvolume, dcategory
+  </sql>
+  <select id="selectByExample" parameterType="com.vo.ShopExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from shop
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from shop
+    where shopno = #{shopno,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from shop
+    where shopno = #{shopno,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.vo.ShopExample">
+    delete from shop
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.vo.Shop">
+    insert into shop (shopno, ownerno, shopname, 
+      shopstate, shopapplytime, shopadopttime, 
+      shopvolume, dcategory)
+    values (#{shopno,jdbcType=INTEGER}, #{ownerno,jdbcType=INTEGER}, #{shopname,jdbcType=VARCHAR}, 
+      #{shopstate,jdbcType=INTEGER}, #{shopapplytime,jdbcType=TIMESTAMP}, #{shopadopttime,jdbcType=TIMESTAMP}, 
+      #{shopvolume,jdbcType=INTEGER}, #{dcategory,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.Shop">
+    insert into shop
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shopno != null">
+        shopno,
+      </if>
+      <if test="ownerno != null">
+        ownerno,
+      </if>
+      <if test="shopname != null">
+        shopname,
+      </if>
+      <if test="shopstate != null">
+        shopstate,
+      </if>
+      <if test="shopapplytime != null">
+        shopapplytime,
+      </if>
+      <if test="shopadopttime != null">
+        shopadopttime,
+      </if>
+      <if test="shopvolume != null">
+        shopvolume,
+      </if>
+      <if test="dcategory != null">
+        dcategory,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="shopno != null">
+        #{shopno,jdbcType=INTEGER},
+      </if>
+      <if test="ownerno != null">
+        #{ownerno,jdbcType=INTEGER},
+      </if>
+      <if test="shopname != null">
+        #{shopname,jdbcType=VARCHAR},
+      </if>
+      <if test="shopstate != null">
+        #{shopstate,jdbcType=INTEGER},
+      </if>
+      <if test="shopapplytime != null">
+        #{shopapplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shopadopttime != null">
+        #{shopadopttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shopvolume != null">
+        #{shopvolume,jdbcType=INTEGER},
+      </if>
+      <if test="dcategory != null">
+        #{dcategory,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.vo.ShopExample" resultType="java.lang.Long">
+    select count(*) from shop
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update shop
+    <set>
+      <if test="record.shopno != null">
+        shopno = #{record.shopno,jdbcType=INTEGER},
+      </if>
+      <if test="record.ownerno != null">
+        ownerno = #{record.ownerno,jdbcType=INTEGER},
+      </if>
+      <if test="record.shopname != null">
+        shopname = #{record.shopname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopstate != null">
+        shopstate = #{record.shopstate,jdbcType=INTEGER},
+      </if>
+      <if test="record.shopapplytime != null">
+        shopapplytime = #{record.shopapplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.shopadopttime != null">
+        shopadopttime = #{record.shopadopttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.shopvolume != null">
+        shopvolume = #{record.shopvolume,jdbcType=INTEGER},
+      </if>
+      <if test="record.dcategory != null">
+        dcategory = #{record.dcategory,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update shop
+    set shopno = #{record.shopno,jdbcType=INTEGER},
+      ownerno = #{record.ownerno,jdbcType=INTEGER},
+      shopname = #{record.shopname,jdbcType=VARCHAR},
+      shopstate = #{record.shopstate,jdbcType=INTEGER},
+      shopapplytime = #{record.shopapplytime,jdbcType=TIMESTAMP},
+      shopadopttime = #{record.shopadopttime,jdbcType=TIMESTAMP},
+      shopvolume = #{record.shopvolume,jdbcType=INTEGER},
+      dcategory = #{record.dcategory,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vo.Shop">
+    update shop
+    <set>
+      <if test="ownerno != null">
+        ownerno = #{ownerno,jdbcType=INTEGER},
+      </if>
+      <if test="shopname != null">
+        shopname = #{shopname,jdbcType=VARCHAR},
+      </if>
+      <if test="shopstate != null">
+        shopstate = #{shopstate,jdbcType=INTEGER},
+      </if>
+      <if test="shopapplytime != null">
+        shopapplytime = #{shopapplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shopadopttime != null">
+        shopadopttime = #{shopadopttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shopvolume != null">
+        shopvolume = #{shopvolume,jdbcType=INTEGER},
+      </if>
+      <if test="dcategory != null">
+        dcategory = #{dcategory,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where shopno = #{shopno,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vo.Shop">
+    update shop
+    set ownerno = #{ownerno,jdbcType=INTEGER},
+      shopname = #{shopname,jdbcType=VARCHAR},
+      shopstate = #{shopstate,jdbcType=INTEGER},
+      shopapplytime = #{shopapplytime,jdbcType=TIMESTAMP},
+      shopadopttime = #{shopadopttime,jdbcType=TIMESTAMP},
+      shopvolume = #{shopvolume,jdbcType=INTEGER},
+      dcategory = #{dcategory,jdbcType=VARCHAR}
+    where shopno = #{shopno,jdbcType=INTEGER}
+  </update>
+<insert id="shopshenqing" parameterType="shop">
+insert into shop (ownerno, shopname, shopstate , shopapplytime, dcategory) VALUES (#{ownerno}, #{shopname}, '1',#{shopapplytime,jdbcType=TIMESTAMP}, #{dcategory})
+</insert>
+ <select id="getno"  resultType="int">
+    select shopno from shop
+    where shopname = #{shopname,jdbcType=VARCHAR}
+  </select>
+   <select id="getmount"  resultType="int">
+    select count(*) from shop
+    where shopstate = 1
+  </select>
+    <select id="getalldaishenhe"  resultMap="BaseResultMap">
+    select 
+    from shop
+    where shopstate = 1
+  </select>
+    <update id="updatetime">
+    update shop
+    set 
+    shopadopttime = #{shopadopttime,jdbcType=TIMESTAMP}
+    where shopno = #{shopno,jdbcType=INTEGER}
+  </update>
+      <update id="updatestate">
+    update shop
+    set 
+    shopstate = 2
+    where shopno = #{shopno,jdbcType=INTEGER}
+  </update>
+        <update id="updatestate2">
+    update shop
+    set 
+    shopstate = 0
+    where shopno = #{shopno,jdbcType=INTEGER}
+  </update>
+          <update id="updatevolume">
+    update shop
+    set 
+    shopvolume = 0
+    where shopno = #{shopno,jdbcType=INTEGER}
+  </update>
+   <select id="panduanzhuangtai" resultMap="BaseResultMap" >
+    select * from shop
+    where ownerno = #{ownerno,jdbcType=INTEGER}
+  </select>
+      <resultMap type="com.vo.Shop" id="shopshop">
+        <!-- property 表示com.mybatis.bean.StudentTemp中的属性； column 表示表中的列名 -->
+    <id column="shopno" jdbcType="INTEGER" property="shopno" />
+    <result column="ownerno" jdbcType="INTEGER" property="ownerno" />
+    <result column="shopname" jdbcType="VARCHAR" property="shopname" />
+    <result column="shopstate" jdbcType="INTEGER" property="shopstate" />
+    <result column="shopapplytime" jdbcType="TIMESTAMP" property="shopapplytime" />
+    <result column="shopadopttime" jdbcType="TIMESTAMP" property="shopadopttime" />
+    <result column="shopvolume" jdbcType="INTEGER" property="shopvolume" />
+    <result column="dcategory" jdbcType="VARCHAR" property="dcategory" />
+        <!-- association字面意思关联，这里只专门做一对一关联； property表示是com.mybatis.bean.StudentTemp中的属性名称； 
+            javaType表示该属性是什么类型对象 -->
+        <association property="shopphoto" javaType="com.vo.Shopphoto">
+            <!-- property 表示com.mybatis.bean.Class中的属性； column 表示表中的列名 -->
+            <result column="sno" jdbcType="INTEGER" property="sno" />
+    <result column="sozjno" jdbcType="BIGINT" property="sozjno" />
+    <result column="soname" jdbcType="VARCHAR" property="soname" />
+    <result column="sphoto" jdbcType="LONGVARBINARY" property="sphoto" />
+        </association>
+</resultMap>
+   <select id="getsuoyoushangdian" resultMap="shopshop" >
+    select * from shop,shopphoto
+    where shopno=sno and shopstate=2
+  </select>
+     <select id="getshopname" resultType="string" >
+    select shopname from shop
+    where shopno=#{shopno,jdbcType=INTEGER}
+  </select>
+    <update id="over3" >
+    update shop
+    set 
+      shopvolume = shopvolume+1
+ 
+    where shopno = #{shopno,jdbcType=INTEGER}
+  </update>
+      <select id="getsuoyoushangdian1" resultMap="shopshop" >
+    select * from shop,shopphoto
+    where shopno=sno and dcategory='中式简餐' and shopstate=2
+  </select>
+     <select id="getsuoyoushangdian2" resultMap="shopshop" >
+    select * from shop,shopphoto
+    where shopno=sno and dcategory='米粉面馆' and shopstate=2
+  </select>   
+  <select id="getsuoyoushangdian3" resultMap="shopshop" >
+    select * from shop,shopphoto
+    where shopno=sno and dcategory='烧烤海鲜' and shopstate=2
+  </select>
+     <select id="getsuoyoushangdian4" resultMap="shopshop" >
+    select * from shop,shopphoto
+    where shopno=sno and dcategory='西式快餐' and shopstate=2
+  </select>
+     <select id="getsuoyoushangdian5" resultMap="shopshop" >
+    select * from shop,shopphoto
+    where shopno=sno and dcategory='炸鸡炸串' and shopstate=2
+  </select>
+     <select id="getsuoyoushangdian6" resultMap="shopshop" >
+    select * from shop,shopphoto
+    where shopno=sno and dcategory='异域风情' and shopstate=2
+  </select>
+       <select id="shifouexist" resultType="shop" >
+    select * from shop
+    where ownerno = #{ownerno,jdbcType=INTEGER}
+  </select>
+       <select id="getallshangpu" resultType="shop" >
+    select * from shop where shopstate!=4
+
+  </select>
+     <select id="getonlyoneshop"  resultType="shop">
+    select * from shop
+    where shopno=#{shopno,jdbcType=INTEGER}
+  </select>
+        <update id="shanchushangjia"  >
+      update shop
+    set 
+    shopstate = 4
+    where shopno = #{shopno,jdbcType=INTEGER}
+
+  </update>
+</mapper>

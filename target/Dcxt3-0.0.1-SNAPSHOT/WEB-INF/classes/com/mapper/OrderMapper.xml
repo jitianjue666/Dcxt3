@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.vo.Order">
+    <result column="orderno" jdbcType="BIGINT" property="orderno" />
+    <result column="buyerno" jdbcType="INTEGER" property="buyerno" />
+    <result column="sellerno" jdbcType="INTEGER" property="sellerno" />
+    <result column="dishno" jdbcType="INTEGER" property="dishno" />
+    <result column="ordertime" jdbcType="TIMESTAMP" property="ordertime" />
+    <result column="ordercategory" jdbcType="INTEGER" property="ordercategory" />
+    <result column="overtime" jdbcType="TIMESTAMP" property="overtime" />
+    <result column="dishmount" jdbcType="INTEGER" property="dishmount" />
+    <result column="totalmount" jdbcType="DOUBLE" property="totalmount" />
+    <result column="dishmingzi" jdbcType="VARCHAR" property="dishmingzi" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    orderno, buyerno, sellerno, dishno, ordertime, ordercategory, overtime, dishmount, 
+    totalmount, dishmingzi
+  </sql>
+  <select id="selectByExample" parameterType="com.vo.OrderExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.vo.OrderExample">
+    delete from order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.vo.Order">
+    insert into order (orderno, buyerno, sellerno, 
+      dishno, ordertime, ordercategory, 
+      overtime, dishmount, totalmount, 
+      dishmingzi)
+    values (#{orderno,jdbcType=BIGINT}, #{buyerno,jdbcType=INTEGER}, #{sellerno,jdbcType=INTEGER}, 
+      #{dishno,jdbcType=INTEGER}, #{ordertime,jdbcType=TIMESTAMP}, #{ordercategory,jdbcType=INTEGER}, 
+      #{overtime,jdbcType=TIMESTAMP}, #{dishmount,jdbcType=INTEGER}, #{totalmount,jdbcType=INTEGER}, 
+      #{dishmingzi,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.Order">
+    insert into order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderno != null">
+        orderno,
+      </if>
+      <if test="buyerno != null">
+        buyerno,
+      </if>
+      <if test="sellerno != null">
+        sellerno,
+      </if>
+      <if test="dishno != null">
+        dishno,
+      </if>
+      <if test="ordertime != null">
+        ordertime,
+      </if>
+      <if test="ordercategory != null">
+        ordercategory,
+      </if>
+      <if test="overtime != null">
+        overtime,
+      </if>
+      <if test="dishmount != null">
+        dishmount,
+      </if>
+      <if test="totalmount != null">
+        totalmount,
+      </if>
+      <if test="dishmingzi != null">
+        dishmingzi,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderno != null">
+        #{orderno,jdbcType=BIGINT},
+      </if>
+      <if test="buyerno != null">
+        #{buyerno,jdbcType=INTEGER},
+      </if>
+      <if test="sellerno != null">
+        #{sellerno,jdbcType=INTEGER},
+      </if>
+      <if test="dishno != null">
+        #{dishno,jdbcType=INTEGER},
+      </if>
+      <if test="ordertime != null">
+        #{ordertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ordercategory != null">
+        #{ordercategory,jdbcType=INTEGER},
+      </if>
+      <if test="overtime != null">
+        #{overtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dishmount != null">
+        #{dishmount,jdbcType=INTEGER},
+      </if>
+      <if test="totalmount != null">
+        #{totalmount,jdbcType=INTEGER},
+      </if>
+      <if test="dishmingzi != null">
+        #{dishmingzi,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.vo.OrderExample" resultType="java.lang.Long">
+    select count(*) from order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update order
+    <set>
+      <if test="record.orderno != null">
+        orderno = #{record.orderno,jdbcType=BIGINT},
+      </if>
+      <if test="record.buyerno != null">
+        buyerno = #{record.buyerno,jdbcType=INTEGER},
+      </if>
+      <if test="record.sellerno != null">
+        sellerno = #{record.sellerno,jdbcType=INTEGER},
+      </if>
+      <if test="record.dishno != null">
+        dishno = #{record.dishno,jdbcType=INTEGER},
+      </if>
+      <if test="record.ordertime != null">
+        ordertime = #{record.ordertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ordercategory != null">
+        ordercategory = #{record.ordercategory,jdbcType=INTEGER},
+      </if>
+      <if test="record.overtime != null">
+        overtime = #{record.overtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.dishmount != null">
+        dishmount = #{record.dishmount,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalmount != null">
+        totalmount = #{record.totalmount,jdbcType=INTEGER},
+      </if>
+      <if test="record.dishmingzi != null">
+        dishmingzi = #{record.dishmingzi,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update order
+    set orderno = #{record.orderno,jdbcType=BIGINT},
+      buyerno = #{record.buyerno,jdbcType=INTEGER},
+      sellerno = #{record.sellerno,jdbcType=INTEGER},
+      dishno = #{record.dishno,jdbcType=INTEGER},
+      ordertime = #{record.ordertime,jdbcType=TIMESTAMP},
+      ordercategory = #{record.ordercategory,jdbcType=INTEGER},
+      overtime = #{record.overtime,jdbcType=TIMESTAMP},
+      dishmount = #{record.dishmount,jdbcType=INTEGER},
+      totalmount = #{record.totalmount,jdbcType=DOUBLE},
+      dishmingzi = #{record.dishmingzi,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+    <insert id="xiadan" parameterType="com.vo.Order">
+    insert into `order`(orderno,buyerno,sellerno,dishno,ordertime,dishmount,totalmount,dishmingzi,ordercategory)
+    values (#{orderno,jdbcType=BIGINT},#{buyerno,jdbcType=INTEGER},#{sellerno,jdbcType=INTEGER},#{dishno,jdbcType=INTEGER},#{ordertime,jdbcType=TIMESTAMP},#{dishmount,jdbcType=INTEGER},#{totalmount,jdbcType=DOUBLE},#{dishmingzi,jdbcType=VARCHAR},2)
+  </insert>
+      <insert id="add00" >
+    insert into `order`(orderno,sellerno,ordercategory)
+    values (0,#{sellerno,jdbcType=INTEGER},0)
+  </insert>
+    <select id="getordernumber"  resultType="int">
+    select max(orderno) from `order` where sellerno = #{sellerno,jdbcType=INTEGER}
+ </select>
+     <select id="getwwcordernumber"  resultType="int">
+    select distinct orderno from `order` where sellerno = #{sellerno,jdbcType=INTEGER} and ordercategory=2
+ </select>
+       <resultMap type="com.vo.Order" id="orderorder">
+        <!-- property 表示com.mybatis.bean.StudentTemp中的属性； column 表示表中的列名 -->
+    <result column="orderno" jdbcType="BIGINT" property="orderno" />
+    <result column="buyerno" jdbcType="INTEGER" property="buyerno" />
+    <result column="sellerno" jdbcType="INTEGER" property="sellerno" />
+    <result column="dishno" jdbcType="INTEGER" property="dishno" />
+    <result column="ordertime" jdbcType="TIMESTAMP" property="ordertime" />
+    <result column="ordercategory" jdbcType="INTEGER" property="ordercategory" />
+    <result column="overtime" jdbcType="TIMESTAMP" property="overtime" />
+    <result column="dishmount" jdbcType="INTEGER" property="dishmount" />
+    <result column="totalmount" jdbcType="DOUBLE" property="totalmount" />
+    <result column="dishmingzi" jdbcType="VARCHAR" property="dishmingzi" />
+        <!-- association字面意思关联，这里只专门做一对一关联； property表示是com.mybatis.bean.StudentTemp中的属性名称； 
+            javaType表示该属性是什么类型对象 -->
+        <association property="dish" javaType="com.vo.Dish">
+            <!-- property 表示com.mybatis.bean.Class中的属性； column 表示表中的列名 -->
+           <result column="dishname" jdbcType="VARCHAR" property="dishname" />
+</association>
+        <association property="dishphoto2" javaType="com.vo.Dishphoto">
+            <!-- property 表示com.mybatis.bean.Class中的属性； column 表示表中的列名 -->
+           <result column="dphoto" jdbcType="LONGVARBINARY" property="dphoto" />
+</association>
+</resultMap>
+      <select id="getwwcddxx"  resultMap="orderorder">
+    select * from `order`,dish,dishphoto where dishno=dishid and dishno=did and orderno = #{orderno,jdbcType=BIGINT} and sellerno = #{sellerno,jdbcType=INTEGER} and ordercategory=2
+ </select>
+ 
+      <select id="getzijiorder"  resultType="int">
+    select distinct orderno from `order` where buyerno = #{buyerno,jdbcType=INTEGER} order by ordertime desc
+ </select>
+       <select id="getzijiallorder"  resultMap="orderorder">
+    select * from `order` where  orderno = #{orderno,jdbcType=BIGINT} and buyerno = #{buyerno,jdbcType=INTEGER} 
+ </select>
+       <select id="qwerty"  resultMap="orderorder">
+    select * from `order` where  orderno = #{orderno,jdbcType=BIGINT} and sellerno = #{sellerno,jdbcType=INTEGER}
+ </select>
+   <update id="over2" >
+    update `order`
+    set
+      ordercategory =3,
+      overtime = #{overtime,jdbcType=TIMESTAMP} where orderno = #{orderno,jdbcType=BIGINT}  and sellerno = #{sellerno,jdbcType=INTEGER}
+  </update>
+        <select id="getzijiorder2"  resultType="int">
+    select distinct orderno from `order` where sellerno = #{sellerno,jdbcType=INTEGER} and orderno!=0 order by ordertime desc
+ </select>
+        <select id="getzijiallorder2"  resultMap="orderorder">
+    select * from `order` where  orderno = #{orderno,jdbcType=BIGINT} and sellerno = #{sellerno,jdbcType=INTEGER} 
+ </select>
+ <select id="getzijiorder3"  resultType="order">
+    select * from `order` where  orderno = #{orderno,jdbcType=BIGINT} 
+ </select>
+ <select id="getzijiorder4"  resultType="order">
+    select * from `order` where  sellerno = #{sellerno,jdbcType=INTEGER}  and orderno!=0
+ </select>
+   <select id="caipintuijian1"  resultType="com.vo.Cptj1">
+ select count(*) cishu,dishno caipinbianhao from `order` where buyerno=#{buyerno,jdbcType=INTEGER} group by dishno
+  </select>
+</mapper>

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.vo.User">
+    <id column="userno" jdbcType="INTEGER" property="userno" />
+    <result column="usercategory" jdbcType="INTEGER" property="usercategory" />
+    <result column="userpassword" jdbcType="VARCHAR" property="userpassword" />
+    <result column="userid" jdbcType="VARCHAR" property="userid" />
+    <result column="useremail" jdbcType="VARCHAR" property="useremail" />
+    <result column="usercellphone" jdbcType="BIGINT" property="usercellphone" />
+    <result column="userregistertime" jdbcType="TIMESTAMP" property="userregistertime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    userno, usercategory, userpassword, userid, useremail, usercellphone, userregistertime
+  </sql>
+<!--   <select id="selectByExample" parameterType="com.vo.UserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select> -->
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where userno = #{userno,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where userno = #{userno,jdbcType=INTEGER}
+  </delete>
+<!--   <delete id="deleteByExample" parameterType="com.vo.UserExample">
+    delete from user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete> -->
+  <insert id="insert" parameterType="com.vo.User">
+    insert into user (userno, usercategory, userpassword, 
+      userid, useremail, usercellphone, 
+      userregistertime)
+    values (#{userno,jdbcType=INTEGER}, #{usercategory,jdbcType=INTEGER}, #{userpassword,jdbcType=VARCHAR}, 
+      #{userid,jdbcType=VARCHAR}, #{useremail,jdbcType=VARCHAR}, #{usercellphone,jdbcType=INTEGER}, 
+      #{userregistertime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userno != null">
+        userno,
+      </if>
+      <if test="usercategory != null">
+        usercategory,
+      </if>
+      <if test="userpassword != null">
+        userpassword,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="useremail != null">
+        useremail,
+      </if>
+      <if test="usercellphone != null">
+        usercellphone,
+      </if>
+      <if test="userregistertime != null">
+        userregistertime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userno != null">
+        #{userno,jdbcType=INTEGER},
+      </if>
+      <if test="usercategory != null">
+        #{usercategory,jdbcType=INTEGER},
+      </if>
+      <if test="userpassword != null">
+        #{userpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="useremail != null">
+        #{useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="usercellphone != null">
+        #{usercellphone,jdbcType=INTEGER},
+      </if>
+      <if test="userregistertime != null">
+        #{userregistertime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+<!--   <select id="countByExample" parameterType="com.vo.UserExample" resultType="java.lang.Long">
+    select count(*) from user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select> -->
+<!--   <update id="updateByExampleSelective" parameterType="map">
+    update user
+    <set>
+      <if test="record.userno != null">
+        userno = #{record.userno,jdbcType=INTEGER},
+      </if>
+      <if test="record.usercategory != null">
+        usercategory = #{record.usercategory,jdbcType=INTEGER},
+      </if>
+      <if test="record.userpassword != null">
+        userpassword = #{record.userpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userid != null">
+        userid = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.useremail != null">
+        useremail = #{record.useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usercellphone != null">
+        usercellphone = #{record.usercellphone,jdbcType=INTEGER},
+      </if>
+      <if test="record.userregistertime != null">
+        userregistertime = #{record.userregistertime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update> -->
+<!--   <update id="updateByExample" parameterType="map">
+    update user
+    set userno = #{record.userno,jdbcType=INTEGER},
+      usercategory = #{record.usercategory,jdbcType=INTEGER},
+      userpassword = #{record.userpassword,jdbcType=VARCHAR},
+      userid = #{record.userid,jdbcType=VARCHAR},
+      useremail = #{record.useremail,jdbcType=VARCHAR},
+      usercellphone = #{record.usercellphone,jdbcType=INTEGER},
+      userregistertime = #{record.userregistertime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update> -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.vo.User">
+    update user
+    <set>
+      <if test="usercategory != null">
+        usercategory = #{usercategory,jdbcType=INTEGER},
+      </if>
+      <if test="userpassword != null">
+        userpassword = #{userpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="useremail != null">
+        useremail = #{useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="usercellphone != null">
+        usercellphone = #{usercellphone,jdbcType=INTEGER},
+      </if>
+      <if test="userregistertime != null">
+        userregistertime = #{userregistertime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where userno = #{userno,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vo.User">
+    update user
+    set usercategory = #{usercategory,jdbcType=INTEGER},
+      userpassword = #{userpassword,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=VARCHAR},
+      useremail = #{useremail,jdbcType=VARCHAR},
+      usercellphone = #{usercellphone,jdbcType=INTEGER},
+      userregistertime = #{userregistertime,jdbcType=TIMESTAMP}
+    where userno = #{userno,jdbcType=INTEGER}
+  </update>
+  <select id="selectByLogin" parameterType="string" resultType="user">
+select * from user where userid=#{userid} and usercategory=1
+</select>
+  <select id="selectByLogin2" parameterType="string" resultMap="BaseResultMap">
+select * from user where userid=#{userid} and usercategory=2
+</select>
+  <select id="selectByLogin3" parameterType="string" resultType="user">
+select * from user where userid=#{userid} and usercategory=3
+</select>
+<insert id="register1" parameterType="user">
+insert into user (userid, userpassword, useremail, usercellphone, usercategory, userregistertime) VALUES (#{userid}, #{userpassword}, #{useremail}, #{usercellphone}, '1',#{userregistertime,jdbcType=TIMESTAMP})
+</insert>
+<insert id="register2" parameterType="user">
+insert into user (userid, userpassword, useremail, usercellphone, usercategory, userregistertime) VALUES (#{userid}, #{userpassword}, #{useremail}, #{usercellphone}, '2',#{userregistertime,jdbcType=TIMESTAMP})
+</insert>
+ <select id="getuserno"  resultType="int">
+    select userno from user
+    where userid = #{userid,jdbcType=VARCHAR}
+  </select>
+   <select id="getglymessage"  resultType="user">
+    select * from user
+    where userid = #{userid,jdbcType=VARCHAR}
+  </select>
+     <select id="getallguke"  resultType="user">
+    select * from user
+    where usercategory = 1
+  </select>
+   <select id="getuserid"  resultType="string">
+    select userid from user
+    where userno = #{userno,jdbcType=INTEGER}
+  </select>
+       <select id="getallxiaofeizhe"  resultType="user">
+    select * from user
+    where usercategory = 1 and userstate=1
+  </select>
+       <select id="getallshangpuzhuren"  resultType="user">
+    select * from user
+    where usercategory = 2
+  </select>
+   <select id="nogetuser"  resultType="user">
+select * from user where userno = #{userno,jdbcType=INTEGER}
+</select>
+  <update id="xiugaigerenxinxi" >
+    update user
+    set 
+      userpassword = #{userpassword,jdbcType=VARCHAR},
+     
+      useremail = #{useremail,jdbcType=VARCHAR},
+      usercellphone = #{usercellphone,jdbcType=INTEGER}
+      
+    where userno = #{userno,jdbcType=INTEGER}
+  </update>
+    <update id="shanchuyonghu" >
+    update user
+    set 
+      
+      userstate = 2
+      
+    where userno = #{userno,jdbcType=INTEGER}
+  </update>
+</mapper>

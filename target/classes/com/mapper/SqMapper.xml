@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.SqMapper">
+  <resultMap id="BaseResultMap" type="com.vo.Sq">
+    <result column="shopname" jdbcType="VARCHAR" property="shopname" />
+    <result column="shopapplytime" jdbcType="TIMESTAMP" property="shopapplytime" />
+    <result column="dcategory" jdbcType="VARCHAR" property="dcategory" />
+    <result column="sozjno" jdbcType="BIGINT" property="sozjno" />
+    <result column="soname" jdbcType="VARCHAR" property="soname" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.vo.Sq">
+    <result column="sphoto" jdbcType="LONGVARBINARY" property="sphoto" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    shopname, shopapplytime, dcategory, sozjno, soname
+  </sql>
+  <sql id="Blob_Column_List">
+    sphoto
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.vo.SqExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sq
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.vo.SqExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sq
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.vo.SqExample">
+    delete from sq
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.vo.Sq">
+    insert into sq (shopname, shopapplytime, dcategory, 
+      sozjno, soname, sphoto
+      )
+    values (#{shopname,jdbcType=VARCHAR}, #{shopapplytime,jdbcType=TIMESTAMP}, #{dcategory,jdbcType=VARCHAR}, 
+      #{sozjno,jdbcType=BIGINT}, #{soname,jdbcType=VARCHAR}, #{sphoto,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.Sq">
+    insert into sq
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shopname != null">
+        shopname,
+      </if>
+      <if test="shopapplytime != null">
+        shopapplytime,
+      </if>
+      <if test="dcategory != null">
+        dcategory,
+      </if>
+      <if test="sozjno != null">
+        sozjno,
+      </if>
+      <if test="soname != null">
+        soname,
+      </if>
+      <if test="sphoto != null">
+        sphoto,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="shopname != null">
+        #{shopname,jdbcType=VARCHAR},
+      </if>
+      <if test="shopapplytime != null">
+        #{shopapplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dcategory != null">
+        #{dcategory,jdbcType=VARCHAR},
+      </if>
+      <if test="sozjno != null">
+        #{sozjno,jdbcType=BIGINT},
+      </if>
+      <if test="soname != null">
+        #{soname,jdbcType=VARCHAR},
+      </if>
+      <if test="sphoto != null">
+        #{sphoto,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.vo.SqExample" resultType="java.lang.Long">
+    select count(*) from sq
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update sq
+    <set>
+      <if test="record.shopname != null">
+        shopname = #{record.shopname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopapplytime != null">
+        shopapplytime = #{record.shopapplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.dcategory != null">
+        dcategory = #{record.dcategory,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sozjno != null">
+        sozjno = #{record.sozjno,jdbcType=BIGINT},
+      </if>
+      <if test="record.soname != null">
+        soname = #{record.soname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sphoto != null">
+        sphoto = #{record.sphoto,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update sq
+    set shopname = #{record.shopname,jdbcType=VARCHAR},
+      shopapplytime = #{record.shopapplytime,jdbcType=TIMESTAMP},
+      dcategory = #{record.dcategory,jdbcType=VARCHAR},
+      sozjno = #{record.sozjno,jdbcType=BIGINT},
+      soname = #{record.soname,jdbcType=VARCHAR},
+      sphoto = #{record.sphoto,jdbcType=LONGVARBINARY}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update sq
+    set shopname = #{record.shopname,jdbcType=VARCHAR},
+      shopapplytime = #{record.shopapplytime,jdbcType=TIMESTAMP},
+      dcategory = #{record.dcategory,jdbcType=VARCHAR},
+      sozjno = #{record.sozjno,jdbcType=BIGINT},
+      soname = #{record.soname,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+    <select id="getallwei"  resultType="sq">
+    select shopname,shopapplytime,dcategory,sphoto,sozjno,soname from shop,shopphoto  where shopno=sno and shopstate=1 
+</select>
+</mapper>

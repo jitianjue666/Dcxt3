@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ShangpuMapper">
+  <resultMap id="BaseResultMap" type="com.vo.Shangpu">
+    <result column="shangjiabianhao" jdbcType="INTEGER" property="shangjiabianhao" />
+    <result column="shangpuyongyouzhebianhao" jdbcType="INTEGER" property="shangpuyongyouzhebianhao" />
+    <result column="shangpuyongyouzheid" jdbcType="VARCHAR" property="shangpuyongyouzheid" />
+    <result column="shangpumingzi" jdbcType="VARCHAR" property="shangpumingzi" />
+    <result column="shangpushenqingshijian" jdbcType="TIMESTAMP" property="shangpushenqingshijian" />
+    <result column="chulishenqingshijian" jdbcType="TIMESTAMP" property="chulishenqingshijian" />
+    <result column="shangpuzhuangtai" jdbcType="VARCHAR" property="shangpuzhuangtai" />
+    <result column="shangpuzongxiaoliang" jdbcType="INTEGER" property="shangpuzongxiaoliang" />
+    <result column="shangpuzongshouru" jdbcType="DOUBLE" property="shangpuzongshouru" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    shangjiabianhao, shangpuyongyouzhebianhao, shangpuyongyouzheid, shangpumingzi, shangpushenqingshijian, 
+    chulishenqingshijian, shangpuzhuangtai, shangpuzongxiaoliang, shangpuzongshouru
+  </sql>
+  <select id="selectByExample" parameterType="com.vo.ShangpuExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from shangpu
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.vo.ShangpuExample">
+    delete from shangpu
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.vo.Shangpu">
+    insert into shangpu (shangjiabianhao, shangpuyongyouzhebianhao, 
+      shangpuyongyouzheid, shangpumingzi, shangpushenqingshijian, 
+      chulishenqingshijian, shangpuzhuangtai, 
+      shangpuzongxiaoliang, shangpuzongshouru)
+    values (#{shangjiabianhao,jdbcType=INTEGER}, #{shangpuyongyouzhebianhao,jdbcType=INTEGER}, 
+      #{shangpuyongyouzheid,jdbcType=VARCHAR}, #{shangpumingzi,jdbcType=VARCHAR}, #{shangpushenqingshijian,jdbcType=TIMESTAMP}, 
+      #{chulishenqingshijian,jdbcType=TIMESTAMP}, #{shangpuzhuangtai,jdbcType=VARCHAR}, 
+      #{shangpuzongxiaoliang,jdbcType=INTEGER}, #{shangpuzongshouru,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.Shangpu">
+    insert into shangpu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shangjiabianhao != null">
+        shangjiabianhao,
+      </if>
+      <if test="shangpuyongyouzhebianhao != null">
+        shangpuyongyouzhebianhao,
+      </if>
+      <if test="shangpuyongyouzheid != null">
+        shangpuyongyouzheid,
+      </if>
+      <if test="shangpumingzi != null">
+        shangpumingzi,
+      </if>
+      <if test="shangpushenqingshijian != null">
+        shangpushenqingshijian,
+      </if>
+      <if test="chulishenqingshijian != null">
+        chulishenqingshijian,
+      </if>
+      <if test="shangpuzhuangtai != null">
+        shangpuzhuangtai,
+      </if>
+      <if test="shangpuzongxiaoliang != null">
+        shangpuzongxiaoliang,
+      </if>
+      <if test="shangpuzongshouru != null">
+        shangpuzongshouru,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="shangjiabianhao != null">
+        #{shangjiabianhao,jdbcType=INTEGER},
+      </if>
+      <if test="shangpuyongyouzhebianhao != null">
+        #{shangpuyongyouzhebianhao,jdbcType=INTEGER},
+      </if>
+      <if test="shangpuyongyouzheid != null">
+        #{shangpuyongyouzheid,jdbcType=VARCHAR},
+      </if>
+      <if test="shangpumingzi != null">
+        #{shangpumingzi,jdbcType=VARCHAR},
+      </if>
+      <if test="shangpushenqingshijian != null">
+        #{shangpushenqingshijian,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chulishenqingshijian != null">
+        #{chulishenqingshijian,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shangpuzhuangtai != null">
+        #{shangpuzhuangtai,jdbcType=VARCHAR},
+      </if>
+      <if test="shangpuzongxiaoliang != null">
+        #{shangpuzongxiaoliang,jdbcType=INTEGER},
+      </if>
+      <if test="shangpuzongshouru != null">
+        #{shangpuzongshouru,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.vo.ShangpuExample" resultType="java.lang.Long">
+    select count(*) from shangpu
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update shangpu
+    <set>
+      <if test="record.shangjiabianhao != null">
+        shangjiabianhao = #{record.shangjiabianhao,jdbcType=INTEGER},
+      </if>
+      <if test="record.shangpuyongyouzhebianhao != null">
+        shangpuyongyouzhebianhao = #{record.shangpuyongyouzhebianhao,jdbcType=INTEGER},
+      </if>
+      <if test="record.shangpuyongyouzheid != null">
+        shangpuyongyouzheid = #{record.shangpuyongyouzheid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shangpumingzi != null">
+        shangpumingzi = #{record.shangpumingzi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shangpushenqingshijian != null">
+        shangpushenqingshijian = #{record.shangpushenqingshijian,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.chulishenqingshijian != null">
+        chulishenqingshijian = #{record.chulishenqingshijian,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.shangpuzhuangtai != null">
+        shangpuzhuangtai = #{record.shangpuzhuangtai,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shangpuzongxiaoliang != null">
+        shangpuzongxiaoliang = #{record.shangpuzongxiaoliang,jdbcType=INTEGER},
+      </if>
+      <if test="record.shangpuzongshouru != null">
+        shangpuzongshouru = #{record.shangpuzongshouru,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update shangpu
+    set shangjiabianhao = #{record.shangjiabianhao,jdbcType=INTEGER},
+      shangpuyongyouzhebianhao = #{record.shangpuyongyouzhebianhao,jdbcType=INTEGER},
+      shangpuyongyouzheid = #{record.shangpuyongyouzheid,jdbcType=VARCHAR},
+      shangpumingzi = #{record.shangpumingzi,jdbcType=VARCHAR},
+      shangpushenqingshijian = #{record.shangpushenqingshijian,jdbcType=TIMESTAMP},
+      chulishenqingshijian = #{record.chulishenqingshijian,jdbcType=TIMESTAMP},
+      shangpuzhuangtai = #{record.shangpuzhuangtai,jdbcType=VARCHAR},
+      shangpuzongxiaoliang = #{record.shangpuzongxiaoliang,jdbcType=INTEGER},
+      shangpuzongshouru = #{record.shangpuzongshouru,jdbcType=DOUBLE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

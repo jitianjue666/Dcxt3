@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.DishcategoryMapper">
+  <resultMap id="BaseResultMap" type="com.vo.Dishcategory">
+    <result column="shopshopno" jdbcType="INTEGER" property="shopshopno" />
+    <result column="dcategory" jdbcType="VARCHAR" property="dcategory" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    shopshopno, dcategory
+  </sql>
+  <select id="selectByExample" parameterType="com.vo.DishcategoryExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dishcategory
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.vo.DishcategoryExample">
+    delete from dishcategory
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.vo.Dishcategory">
+    insert into dishcategory (shopshopno, dcategory)
+    values (#{shopshopno,jdbcType=INTEGER}, #{dcategory,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vo.Dishcategory">
+    insert into dishcategory
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shopshopno != null">
+        shopshopno,
+      </if>
+      <if test="dcategory != null">
+        dcategory,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="shopshopno != null">
+        #{shopshopno,jdbcType=INTEGER},
+      </if>
+      <if test="dcategory != null">
+        #{dcategory,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.vo.DishcategoryExample" resultType="java.lang.Long">
+    select count(*) from dishcategory
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update dishcategory
+    <set>
+      <if test="record.shopshopno != null">
+        shopshopno = #{record.shopshopno,jdbcType=INTEGER},
+      </if>
+      <if test="record.dcategory != null">
+        dcategory = #{record.dcategory,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update dishcategory
+    set shopshopno = #{record.shopshopno,jdbcType=INTEGER},
+      dcategory = #{record.dcategory,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+    <insert id="xinzengcaipinfenlei" parameterType="com.vo.Dishcategory">
+    insert into dishcategory (shopshopno, dcategory)
+    values (#{shopshopno,jdbcType=INTEGER}, #{dcategory,jdbcType=VARCHAR})
+  </insert>
+    <select id="getallcategory" resultMap="BaseResultMap" >
+    select * from dishcategory where shopshopno=#{shopshopno,jdbcType=INTEGER} order by dcategory
+ </select>
+   <delete id="shanchucaipinfenlei">
+    delete from dishcategory where shopshopno = #{shopshopno,jdbcType=INTEGER} and dcategory = #{dcategory,jdbcType=VARCHAR}
+ </delete>
+</mapper>
