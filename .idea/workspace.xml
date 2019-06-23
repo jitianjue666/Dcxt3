@@ -6,14 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eecab63e-c6e1-4490-9ed0-0d095523f569" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/target/Dcxt3-0.0.1-SNAPSHOT/WEB-INF/classes/com/dao/AMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/dao/AMapper.class" afterDir="false" />
+    <list default="true" id="eecab63e-c6e1-4490-9ed0-0d095523f569" name="Default Changelist" comment="chongtu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/alipay/config/AlipayConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alipay/config/AlipayConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/handler/SellHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/handler/SellHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Dcxt3-0.0.1-SNAPSHOT/WEB-INF/classes/com/dao/CouponlistMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Dcxt3-0.0.1-SNAPSHOT/WEB-INF/classes/com/dao/CouponlistMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dao/CouponlistMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dao/CouponlistMapper.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -63,8 +57,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/handler/SellHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="682" lean-forward="true" selection-start-line="682" selection-end-line="682" />
+            <state relative-caret-position="288">
+              <caret line="680" column="21" lean-forward="true" selection-start-line="680" selection-start-column="21" selection-end-line="680" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -122,7 +116,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="branch1" />
       </map>
     </option>
     <option name="PUSH_TAGS">
@@ -637,7 +631,7 @@
       <workItem from="1560829495280" duration="1471000" />
       <workItem from="1560831483387" duration="1888000" />
       <workItem from="1561292960570" duration="2182000" />
-      <workItem from="1561295322055" duration="1024000" />
+      <workItem from="1561295322055" duration="2247000" />
     </task>
     <task id="LOCAL-00001" summary="第一个idea测试">
       <created>1560827215943</created>
@@ -653,7 +647,42 @@
       <option name="project" value="LOCAL" />
       <updated>1560827781060</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="第一个idea测试">
+      <created>1561296626231</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1561296626231</updated>
+    </task>
+    <task id="LOCAL-00004" summary="第一个idea测试&#10;第一次处理冲突">
+      <created>1561297079684</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1561297079684</updated>
+    </task>
+    <task id="LOCAL-00005" summary="第一个idea测试">
+      <created>1561297170692</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1561297170692</updated>
+    </task>
+    <task id="LOCAL-00006" summary="chongtu">
+      <created>1561297450607</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1561297450607</updated>
+    </task>
+    <task id="LOCAL-00007" summary="chongtu2">
+      <created>1561297583448</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1561297583448</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -668,7 +697,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41240000" />
+    <option name="totallyTimeSpent" value="42463000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="42" y="5" width="1400" height="783" extended-state="0" />
@@ -693,11 +722,11 @@
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.5022355" side_tool="true" visible="true" weight="0.3548387" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50298065" side_tool="true" visible="true" weight="0.3548387" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info anchor="bottom" id="Version Control" order="13" sideWeight="0.49776453" visible="true" weight="0.3548387" />
-      <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.4966488" weight="0.291372" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="13" sideWeight="0.49701938" visible="true" weight="0.3548387" />
+      <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.4962742" weight="0.29032257" />
       <window_info anchor="bottom" id="Application Servers" order="15" sideWeight="0.49932975" weight="0.32956153" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -754,8 +783,11 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="第一个idea测试&#10;第一次处理冲突" />
     <MESSAGE value="第一个idea测试" />
-    <option name="LAST_COMMIT_MESSAGE" value="第一个idea测试" />
+    <MESSAGE value="chongtu" />
+    <MESSAGE value="chongtu2" />
+    <option name="LAST_COMMIT_MESSAGE" value="chongtu2" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/n_nav.js">
@@ -1088,8 +1120,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/handler/SellHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="682" lean-forward="true" selection-start-line="682" selection-end-line="682" />
+        <state relative-caret-position="288">
+          <caret line="680" column="21" lean-forward="true" selection-start-line="680" selection-start-column="21" selection-end-line="680" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
