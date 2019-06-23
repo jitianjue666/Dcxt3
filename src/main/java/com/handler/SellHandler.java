@@ -673,6 +673,8 @@ for(int i=0;i<lo1.size();i++){
 }
  //String qingcheng777="das456";
 System.out.println("ceshi");
+
+
 m.addAttribute("e", e);
 m.addAttribute("q1", q[1]);m.addAttribute("q2", q[2]);m.addAttribute("q3", q[3]);m.addAttribute("q4", q[4]);m.addAttribute("q5", q[5]);m.addAttribute("q6", q[6]);m.addAttribute("q7", q[7]);m.addAttribute("q8", q[8]);m.addAttribute("q9", q[9]);m.addAttribute("q10", q[10]);m.addAttribute("q11", q[11]);m.addAttribute("q12", q[12]);
 m.addAttribute("w1", w[1]);m.addAttribute("w2", w[2]);m.addAttribute("w3", w[3]);m.addAttribute("w4", w[4]);m.addAttribute("w5", w[5]);m.addAttribute("w6", w[6]);m.addAttribute("w7", w[7]);m.addAttribute("w8", w[8]);m.addAttribute("w9", w[9]);m.addAttribute("w10", w[10]);m.addAttribute("w11", w[11]);m.addAttribute("w12", w[12]);
