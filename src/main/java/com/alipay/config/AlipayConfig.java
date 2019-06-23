@@ -45,6 +45,7 @@ public class AlipayConfig {
     public static String log_path = "C:\\";
 
 
+
 //↑↑↑↑↑↑↑↑↑↑请在这里配置您的基本信息↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
     /**
