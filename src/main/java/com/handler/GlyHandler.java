@@ -218,6 +218,6 @@ shopservice.sahnchushangjia(shopno);
 return "redirect:allshangpu.action";
 }
 public String ceshi(){
-	return "qingcheng2";
+	return "qingcheng3";
 }
 }
