@@ -217,4 +217,7 @@ public String shanchushangjia(int shopno){
 shopservice.sahnchushangjia(shopno);
 return "redirect:allshangpu.action";
 }
+public String ceshi(){
+	return "ccc";
+}
 }
